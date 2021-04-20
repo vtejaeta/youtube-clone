@@ -1,0 +1,23 @@
+@import "../../styles/main.scss";
+
+.home-screen-cont {
+  min-height: 100vh;
+  background: $white;
+}
+
+.video-section-cont {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 4.5rem 1.8rem;
+  padding: 4.5rem 0;
+  margin: 0 3.5rem;
+  border-top: 4px solid rgba($color: $black, $alpha: 0.1);
+}
+
+.video-section-cont:first-child {
+  border-top: none;
+}
+
+.whole-videos-cont {
+  background-color: $videos-grid-bg;
+}
