@@ -1,0 +1,52 @@
+@import "../../styles/main.scss";
+
+.hero-logo {
+  @include set-block-image(5rem, 19rem);
+}
+
+.sign-in-card {
+  border: 1px solid $black;
+  border-radius: 5px;
+  background: $light-blue-bg;
+  max-width: 30rem;
+  padding: 3rem;
+  min-height: 45rem;
+  margin: 6.3rem auto;
+  @include set-flex(column, space-evenly, center);
+
+  & > * {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  hr {
+    width: 100%;
+  }
+
+  @include set-desktop-screen {
+    max-width: 38rem;
+  }
+
+  @include set-large-screen {
+    max-width: 37rem;
+  }
+  @include set-medium-screen {
+    max-width: 30rem;
+  }
+
+  @media screen and (max-width: 405px) {
+    max-width: 27rem;
+  }
+
+  @include set-very-small-screen {
+    width: 24rem;
+    min-height: 35rem;
+
+    .hero-logo {
+      @include set-block-image(3rem, 15rem);
+    }
+  }
+}
