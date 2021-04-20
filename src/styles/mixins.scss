@@ -1,0 +1,52 @@
+@mixin set-flex(
+  $direction: row,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin set-block-image($height: 100%, $width: 100%) {
+  display: block;
+  height: $height;
+  width: $width;
+}
+
+@mixin reset-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@mixin set-desktop-screen {
+  @media only screen and (max-width: 1440px) and (min-width: 1080px) {
+    @content;
+  }
+}
+
+@mixin set-large-screen {
+  @media only screen and (max-width: 1080px) {
+    @content;
+  }
+}
+
+@mixin set-medium-screen {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin set-small-screen {
+  @media only screen and (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin set-very-small-screen {
+  @media only screen and (max-width: 375px) {
+    @content;
+  }
+}
