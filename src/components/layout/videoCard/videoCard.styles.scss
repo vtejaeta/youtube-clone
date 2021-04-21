@@ -5,20 +5,20 @@
   flex-direction: column;
 
   .video-thumbnail {
-    position: relative;
-    display: flex;
+    //   position: relative;
+    //   display: flex;
 
-    &::before {
-      content: attr(data-duration);
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.65);
-      color: $white;
-      right: 5px;
-      bottom: 5px;
-      padding: 0.1em 0.3em;
-      border-radius: 0.3em;
-      font-size: 1rem;
-    }
+    //   &::before {
+    //     content: attr(data-duration);
+    //     position: absolute;
+    //     background-color: rgba(0, 0, 0, 0.65);
+    //     color: $white;
+    //     right: 5px;
+    //     bottom: 5px;
+    //     padding: 0.1em 0.3em;
+    //     border-radius: 0.3em;
+    //     font-size: 1rem;
+    //   }
 
     .video-thumbnail-image {
       width: 100%;
