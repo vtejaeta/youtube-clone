@@ -1,7 +1,12 @@
 import React from "react";
 import "./videoCard.styles.scss";
 
-export default function VideoCard() {
+export default function VideoCard({
+  timeFromNow,
+  thumbnailURL,
+  title,
+  channelTitle,
+}) {
   return (
     <div className="video-container">
       <a
@@ -11,7 +16,7 @@ export default function VideoCard() {
       >
         <img
           className="video-thumbnail-image"
-          src="http://unsplash.it/250/150?gravity=center"
+          src={thumbnailURL}
           alt="youtube video thumbnail"
         />
       </a>
@@ -25,13 +30,13 @@ export default function VideoCard() {
         </a>
         <div className="video-details">
           <a href="www.google.com" className="video-title">
-            Random name and Video title
+            {title}
           </a>
           <a href="www.google.com" className="video-channel-name">
-            Channel name
+            {channelTitle}
           </a>
           <div className="video-metadata">
-            <span>12k views</span> • <span>1 week ago</span>
+            <span>{timeFromNow}</span>
           </div>
         </div>
       </div>
