@@ -1,7 +1,7 @@
 import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import VideoCard from "../../components/layout/videoCard/VideoCard";
+import Header from "../../components/layout/header/Header";
 import VideosGridLayout from "../../components/layout/videosGridLayout/VideosGridLayout";
 import { searchVideosByTerm } from "../../features/getVideosByTermSlice";
 import "./homeScreen.styles.scss";
@@ -12,7 +12,7 @@ export default function HomeScreen() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !userName && navigate("/");
+    // !userName && navigate("/");
     if (!videosByTerm.length) {
       dispatch(searchVideosByTerm("ReactJS"));
     }
@@ -21,6 +21,11 @@ export default function HomeScreen() {
   return (
     <div className="home-screen-cont">
       <div className="whole-videos-cont">
+        <Header
+          userPhoto={userPhoto}
+          userEmail={userEmail}
+          userName={userName}
+        />
         <VideosGridLayout />
       </div>
     </div>
