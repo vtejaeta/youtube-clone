@@ -1,0 +1,161 @@
+@import "./../../../styles/main.scss";
+
+.main-logo-cont {
+  @include set-block-image(2.5rem, 10rem);
+  .header-logo {
+    @include set-block-image;
+  }
+}
+
+header {
+  border-bottom: 1px solid rgba($color: $black, $alpha: 0.1);
+  padding: 1.5rem 4rem;
+  position: fixed;
+  // top: 0;
+  width: 100%;
+  z-index: 10000;
+  background: $white;
+  @include set-flex(row, space-between, center);
+
+  .search-box-form {
+    display: flex;
+    flex-grow: 1;
+    margin: 0 3rem 0 1rem;
+    max-width: 630px;
+
+    .search-input {
+      width: 100%;
+      font-size: inherit;
+      padding: 0px 1rem;
+      border: 1px solid rgba($color: $black, $alpha: 0.2);
+      outline: none;
+      height: 3rem;
+      border-right: none;
+
+      &:focus {
+        border: 1px solid rgba($color: $black, $alpha: 1);
+      }
+    }
+
+    .search-btn {
+      display: flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      height: 3rem;
+      background: $light-gray;
+      border: 1px solid rgba($color: $black, $alpha: 0.2);
+      outline: none;
+      cursor: pointer;
+      img {
+        @include set-block-image(2.2rem, 2.2rem);
+      }
+    }
+  }
+  .menu-items {
+    img {
+      @include set-block-image(4.2rem, 4.2rem);
+      border-radius: 50%;
+    }
+  }
+  .welcome-text {
+    color: $dark-gray;
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  min-width: 33px;
+  height: 18px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 2px;
+    bottom: 1px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .theme-input:checked + .slider {
+    background-color: #000000;
+    background-image: linear-gradient(315deg, #000000 0%, #414141 74%);
+    // background-color: #2196f3;
+  }
+
+  .theme-input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
+  }
+
+  .theme-input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 18px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+}
+
+@include set-large-screen {
+  .welcome-text {
+    display: none;
+  }
+  header .search-box-form {
+    margin: 0rem 0rem 0rem 2rem;
+  }
+  .switch {
+    margin: 0 2rem;
+  }
+}
+
+@include set-small-screen {
+  header .search-box-form {
+    .search-btn {
+      display: none;
+    }
+    border-right: 1px solid rgba($color: $black, $alpha: 0.1);
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  header {
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  header .header-logo {
+    content: url("./../../../assets/youtube_social_icon_red.png");
+  }
+  .main-logo-cont {
+    @include set-block-image(2.5rem, 4.3rem);
+  }
+}
