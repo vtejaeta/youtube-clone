@@ -33,7 +33,7 @@ header {
       border-right: none;
 
       &:focus {
-        border: 1px solid rgba($color: $black, $alpha: 1);
+        border: 1px solid $input-focus-border;
       }
     }
 
@@ -53,12 +53,37 @@ header {
   }
   .menu-items {
     img {
-      @include set-block-image(4.2rem, 4.2rem);
+      @include set-block-image(4rem, 4rem);
       border-radius: 50%;
     }
   }
   .welcome-text {
     color: $dark-gray;
+  }
+}
+
+header.dark {
+  background: $dark-header-bg;
+
+  .header-logo {
+    content: url("../../../assets/youtube-dark.png");
+  }
+
+  .search-input {
+    background: $dark-input-bg;
+    color: rgba($color: $white, $alpha: 0.88);
+    border: 1px solid $dark-input-border;
+  }
+
+  .search-btn {
+    background: $dark-search-btn-bg;
+    .search-btn-icon {
+      content: url("../../../assets/search_icon_white.svg");
+      color: rgba($color: $white, $alpha: 0.88);
+    }
+  }
+  .welcome-text {
+    color: rgba($color: $white, $alpha: 0.88);
   }
 }
 
@@ -92,7 +117,7 @@ header {
     height: 15px;
     width: 15px;
     left: 2px;
-    bottom: 1px;
+    bottom: 1.5px;
     background-color: white;
     -webkit-transition: 0.4s;
     transition: 0.4s;
@@ -109,9 +134,9 @@ header {
   }
 
   .theme-input:checked + .slider:before {
-    -webkit-transform: translateX(13px);
-    -ms-transform: translateX(13px);
-    transform: translateX(13px);
+    -webkit-transform: translateX(13.5px);
+    -ms-transform: translateX(13.5px);
+    transform: translateX(13.5px);
   }
 
   /* Rounded sliders */
@@ -128,7 +153,8 @@ header {
   .welcome-text {
     display: none;
   }
-  header .search-box-form {
+  header .search-box-form,
+  header.dark .search-box-form {
     margin: 0rem 0rem 0rem 2rem;
   }
   .switch {
@@ -137,7 +163,8 @@ header {
 }
 
 @include set-small-screen {
-  header .search-box-form {
+  header .search-box-form,
+  header.dark .search-box-form {
     .search-btn {
       display: none;
     }
@@ -146,13 +173,15 @@ header {
 }
 
 @media only screen and (max-width: 520px) {
-  header {
+  header,
+  header.dark {
     padding: 1.5rem 2rem;
   }
 }
 
 @media only screen and (max-width: 420px) {
-  header .header-logo {
+  header .header-logo,
+  header.dark .header-logo {
     content: url("./../../../assets/youtube_social_icon_red.png");
   }
   .main-logo-cont {
