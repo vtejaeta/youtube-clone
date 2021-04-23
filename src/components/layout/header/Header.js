@@ -1,17 +1,32 @@
-import React from "react";
-import "./header.styles.scss";
-import youtubeLight from "../../../assets/youtube-light.png";
+import React, { useEffect, useState } from "react";
 import { Link } from "@reach/router";
+import youtubeLight from "../../../assets/youtube-light.png";
 import searchIcon from "../../../assets/search-icon.svg";
+import { useDispatch, useSelector } from "react-redux";
+import "./header.styles.scss";
+import { setToggleTheme } from "../../../features/themeSlice";
 
-export default function Header({
-  userPhoto = "https://lh3.googleusercontent.com/a-/AOh14GggPjGUeJn0Qncu3PsbY2nvHNOg0-70yC4_BWOR7w=s96-c",
-  userEmail,
-  userName = "Viswateja eatha",
-}) {
+export default function Header({ userPhoto, userEmail, userName }) {
+  const [theme, setTheme] = useState("light");
+  const dispatch = useDispatch();
+  const { theme: UITheme } = useSelector((state) => state.theme);
+
+  function toggleTheme() {
+    setTheme((previousState) => {
+      if (previousState === "light") {
+        return "dark";
+      } else {
+        return "light";
+      }
+    });
+  }
+  useEffect(() => {
+    dispatch(setToggleTheme(theme));
+  }, [theme, dispatch]);
+
   return (
-    <header>
-      <Link to="/">
+    <header class={UITheme === "dark" ? "dark" : ""}>
+      <Link to="/home">
         <div className="main-logo-cont">
           <img src={youtubeLight} alt="youtube-logo" className="header-logo" />
         </div>
@@ -24,23 +39,26 @@ export default function Header({
           className="search-input"
         />
         <button type="submit" className="search-btn">
-          <img src={searchIcon} alt="search button" />
+          <img
+            src={searchIcon}
+            alt="search button"
+            className="search-btn-icon"
+          />
         </button>
       </form>
       <p className="welcome-text">
-        Hello <strong>{"viswateja eatha".toUpperCase()}</strong>
+        Hello <strong>{userName.toUpperCase()}</strong>
       </p>
       <label class="switch">
-        <input type="checkbox" className="theme-input" />
+        <input
+          type="checkbox"
+          className="theme-input"
+          onClick={() => toggleTheme()}
+        />
         <span class="slider round"></span>
       </label>
       <div className="menu-items">
-        <img
-          src={
-            "https://lh3.googleusercontent.com/a-/AOh14GggPjGUeJn0Qncu3PsbY2nvHNOg0-70yC4_BWOR7w=s96-c"
-          }
-          alt="User info"
-        />
+        <img src={userPhoto} alt="User info" />
       </div>
     </header>
   );
