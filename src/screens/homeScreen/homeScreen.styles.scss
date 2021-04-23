@@ -5,6 +5,12 @@
   background: $white;
 }
 
+.home-screen-cont.dark {
+  .whole-videos-cont {
+    background: $dark-video-grid-bg;
+  }
+}
+
 .video-section-cont {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

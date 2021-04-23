@@ -68,3 +68,18 @@
     }
   }
 }
+
+.video-container.dark {
+  .video-title {
+    color: $white;
+  }
+
+  .video-channel-name,
+  .video-metadata {
+    color: $dark-channel-text;
+
+    &:hover {
+      color: rgba($color: $dark-channel-text, $alpha: 0.8);
+    }
+  }
+}
