@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./videoCard.styles.scss";
 
 export default function VideoCard({
@@ -7,8 +8,14 @@ export default function VideoCard({
   title,
   channelTitle,
 }) {
+  const { theme: UITheme } = useSelector((state) => state.theme);
+
   return (
-    <div className="video-container">
+    <div
+      className={
+        UITheme === "dark" ? " video-container dark" : "video-container"
+      }
+    >
       <a
         href="www.google.com"
         className="video-thumbnail"

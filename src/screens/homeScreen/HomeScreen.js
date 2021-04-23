@@ -8,8 +8,10 @@ import "./homeScreen.styles.scss";
 
 export default function HomeScreen() {
   const { userName, userEmail, userPhoto } = useSelector((state) => state.user);
-  const { videosByTerm } = useSelector((state) => state.getVideosByTerm);
   const dispatch = useDispatch();
+
+  const { videosByTerm } = useSelector((state) => state.getVideosByTerm);
+  const { theme: UITheme } = useSelector((state) => state.theme);
 
   useEffect(() => {
     // !userName && navigate("/");
@@ -19,7 +21,11 @@ export default function HomeScreen() {
   }, [userName, videosByTerm, dispatch]);
 
   return (
-    <div className="home-screen-cont">
+    <div
+      className={
+        UITheme === "dark" ? "home-screen-cont dark" : "home-screen-cont"
+      }
+    >
       <div className="whole-videos-cont">
         <Header
           userPhoto={userPhoto}
