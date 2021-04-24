@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import youtubeLight from "../../../assets/youtube-light.png";
 import searchIcon from "../../../assets/search-icon.svg";
 import { useDispatch, useSelector } from "react-redux";
 import "./header.styles.scss";
 import { setToggleTheme } from "../../../features/themeSlice";
+import { getFromLocalStorage } from "../../../utils/localStorage.utils";
 
 export default function Header({ userPhoto, userEmail, userName }) {
-  const [theme, setTheme] = useState("light");
-  const dispatch = useDispatch();
+  const [theme, setTheme] = useState(getFromLocalStorage("_theme") || "light");
+  const [searchTerm, setSearchTerm] = useState("");
+
   const { theme: UITheme } = useSelector((state) => state.theme);
+
+  const dispatch = useDispatch();
 
   function toggleTheme() {
     setTheme((previousState) => {
@@ -20,6 +24,16 @@ export default function Header({ userPhoto, userEmail, userName }) {
       }
     });
   }
+
+  function inputHandler(e) {
+    setSearchTerm(e.target.value);
+  }
+
+  function formHandler(e) {
+    e.preventDefault();
+    searchTerm.trim() && navigate(`/results?search_term=${searchTerm.trim()}`);
+  }
+
   useEffect(() => {
     dispatch(setToggleTheme(theme));
   }, [theme, dispatch]);
@@ -31,12 +45,14 @@ export default function Header({ userPhoto, userEmail, userName }) {
           <img src={youtubeLight} alt="youtube-logo" className="header-logo" />
         </div>
       </Link>
-      <form className="search-box-form">
+      <form className="search-box-form" onSubmit={formHandler}>
         <input
           type="search"
           aria-label="search"
           placeholder="Search"
           className="search-input"
+          value={searchTerm}
+          onChange={inputHandler}
         />
         <button type="submit" className="search-btn">
           <img
@@ -53,6 +69,7 @@ export default function Header({ userPhoto, userEmail, userName }) {
         <input
           type="checkbox"
           className="theme-input"
+          checked={theme === "light" ? false : true}
           onClick={() => toggleTheme()}
         />
         <span class="slider round"></span>
