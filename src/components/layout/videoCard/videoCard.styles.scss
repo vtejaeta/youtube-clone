@@ -70,6 +70,11 @@
 }
 
 .video-container.dark {
+  .video-thumbnail-image,
+  .channel-logo {
+    background-color: $dark-thumbnail-bg;
+  }
+
   .video-title {
     color: $white;
   }
