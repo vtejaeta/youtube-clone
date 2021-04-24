@@ -14,13 +14,13 @@ export default function HomeScreen() {
   const { theme: UITheme } = useSelector((state) => state.theme);
 
   useEffect(() => {
-    // !userName && navigate("/");
+    !userName && navigate("/");
     if (!videosByTerm.length) {
       dispatch(searchVideosByTerm("ReactJS"));
     }
   }, [userName, videosByTerm, dispatch]);
 
-  return (
+  return userName ? (
     <div
       className={
         UITheme === "dark" ? "home-screen-cont dark" : "home-screen-cont"
@@ -35,5 +35,7 @@ export default function HomeScreen() {
         <VideosGridLayout />
       </div>
     </div>
+  ) : (
+    <p>Loading..</p>
   );
 }
