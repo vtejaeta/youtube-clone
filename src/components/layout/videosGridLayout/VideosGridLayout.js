@@ -22,5 +22,5 @@ export default function VideosGridLayout() {
       );
     });
   }
-  return <div className="video-section-cont">{renderVideos()}</div>;
+  return <>{renderVideos()}</>;
 }
