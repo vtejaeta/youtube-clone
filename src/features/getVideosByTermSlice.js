@@ -12,6 +12,9 @@ const getVideosByTermSlice = createSlice({
     setVideosByTerm: (state, action) => {
       state.videosByTerm = action.payload;
     },
+    resetVideos: (state) => {
+      state.videosByTerm = [];
+    },
   },
 });
 
@@ -39,5 +42,5 @@ export async function getVideoViewsCount(videoId) {
   return data;
 }
 
-export const { setVideosByTerm } = getVideosByTermSlice.actions;
+export const { setVideosByTerm, resetVideos } = getVideosByTermSlice.actions;
 export default getVideosByTermSlice.reducer;
