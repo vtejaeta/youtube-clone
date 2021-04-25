@@ -3,10 +3,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/layout/header/Header";
 import VideosGridLayout from "../../components/layout/videosGridLayout/VideosGridLayout";
-import { searchVideosByTerm } from "../../features/getVideosByTermSlice";
+import {
+  resetVideos,
+  searchVideosByTerm,
+} from "../../features/getVideosByTermSlice";
 import "./homeScreen.styles.scss";
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
   const { userName, userEmail, userPhoto } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -18,7 +21,9 @@ export default function HomeScreen() {
     if (!videosByTerm.length) {
       dispatch(searchVideosByTerm("ReactJS"));
     }
-  }, [userName, videosByTerm, dispatch]);
+  }, [userName, videosByTerm, dispatch, props]);
+
+  console.log(props);
 
   return userName ? (
     <div
@@ -32,7 +37,9 @@ export default function HomeScreen() {
           userEmail={userEmail}
           userName={userName}
         />
-        <VideosGridLayout />
+        <div className="video-section-cont">
+          <VideosGridLayout />
+        </div>
       </div>
     </div>
   ) : (
