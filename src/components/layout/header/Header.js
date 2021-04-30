@@ -39,7 +39,7 @@ export default function Header({ userPhoto, userEmail, userName }) {
   }, [theme, dispatch]);
 
   return (
-    <header class={UITheme === "dark" ? "dark" : ""}>
+    <header className={UITheme === "dark" ? "dark" : ""}>
       <Link to="/home">
         <div className="main-logo-cont">
           <img src={youtubeLight} alt="youtube-logo" className="header-logo" />
@@ -65,14 +65,15 @@ export default function Header({ userPhoto, userEmail, userName }) {
       <p className="welcome-text">
         Hello <strong>{userName.toUpperCase()}</strong>
       </p>
-      <label class="switch">
+      <label className="switch">
         <input
           type="checkbox"
           className="theme-input"
           checked={theme === "light" ? false : true}
-          onClick={() => toggleTheme()}
+          // onClick={() => toggleTheme()}
+          onChange={() => toggleTheme()}
         />
-        <span class="slider round"></span>
+        <span className="slider round"></span>
       </label>
       <div className="menu-items">
         <img src={userPhoto} alt="User info" />
