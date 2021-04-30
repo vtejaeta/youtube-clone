@@ -23,8 +23,6 @@ export default function HomeScreen(props) {
     }
   }, [userName, videosByTerm, dispatch, props]);
 
-  console.log(props);
-
   return userName ? (
     <div
       className={
