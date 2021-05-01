@@ -32,6 +32,7 @@ export default function Header({ userPhoto, userEmail, userName }) {
   function formHandler(e) {
     e.preventDefault();
     searchTerm.trim() && navigate(`/results?search_term=${searchTerm.trim()}`);
+    setSearchTerm("");
   }
 
   useEffect(() => {
