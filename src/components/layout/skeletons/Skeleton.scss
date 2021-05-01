@@ -1,0 +1,74 @@
+@import "../../../styles/main.scss";
+
+.skeleton {
+  background: $thumbnail-bg;
+  margin: 0.5rem 0;
+  border-radius: 0.4rem;
+}
+
+.skeleton.text {
+  width: 100%;
+  height: 1.1rem;
+}
+
+.skeleton.title {
+  width: 50%;
+  height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton.avatar {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.skeleton.thumbnail {
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  min-width: 250px;
+}
+
+// === VideoCard skeleton ===
+.video-container-skeleton {
+  display: flex;
+  flex-direction: column;
+  .video-author-details-skeleton {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+  }
+  .video-details-skeleton {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.8rem;
+    .skeleton.title {
+      width: 20rem;
+      @include set-very-small-screen {
+        width: 16rem;
+      }
+    }
+    .skeleton.text {
+      width: 10rem;
+    }
+  }
+}
+
+.videos-section-cont-skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 4.5rem 1.8rem;
+  padding: 12.5rem 0;
+  margin: 0 3.5rem;
+  // border-top: 4px solid rgba($color: $black, $alpha: 0.1);
+}
+
+.videos-section-cont-skeleton.dark,
+.video-container-skeleton.dark {
+  .skeleton {
+    background: $dark-skeleton-bg;
+  }
+}
