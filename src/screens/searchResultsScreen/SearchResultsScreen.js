@@ -16,7 +16,8 @@ export default function SearchResultsScreen(props) {
 
   useEffect(() => {
     const term = new URL(props.location.href).searchParams.get("search_term");
-    dispatch(searchVideosByTerm(term));
+    console.log({ term });
+    // dispatch(searchVideosByTerm(term));
 
     return () => dispatch(resetVideos());
   }, [props.location, dispatch]);
