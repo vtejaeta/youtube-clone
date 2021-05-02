@@ -2,14 +2,8 @@ import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/layout/header/Header";
-import SkeletonElement from "../../components/layout/skeletons/SkeletonElement";
-import SkeletonVideoCard from "../../components/layout/skeletons/SkeletonVideoCard";
-import SkeletonVideoGrid from "../../components/layout/skeletons/SkeletonVideoGrid";
 import VideosGridLayout from "../../components/layout/videosGridLayout/VideosGridLayout";
-import {
-  resetVideos,
-  searchVideosByTerm,
-} from "../../features/getVideosByTermSlice";
+import { searchVideosByTerm } from "../../features/getVideosByTermSlice";
 import "./homeScreen.styles.scss";
 
 export default function HomeScreen(props) {
@@ -19,12 +13,12 @@ export default function HomeScreen(props) {
   const { videosByTerm } = useSelector((state) => state.getVideosByTerm);
   const { theme: UITheme } = useSelector((state) => state.theme);
 
-  // useEffect(() => {
-  //   !userName && navigate("/");
-  //   if (!videosByTerm.length) {
-  //     dispatch(searchVideosByTerm("ReactJS"));
-  //   }
-  // }, [userName, videosByTerm, dispatch, props]);
+  useEffect(() => {
+    !userName && navigate("/");
+    if (!videosByTerm.length) {
+      // dispatch(searchVideosByTerm("ReactJS"));
+    }
+  }, [userName, videosByTerm, dispatch, props]);
 
   return userName ? (
     <div
@@ -38,7 +32,7 @@ export default function HomeScreen(props) {
           userEmail={userEmail}
           userName={userName}
         />
-        <SkeletonVideoGrid />
+        {/* <SkeletonVideoGrid /> */}
         <div className="video-section-cont">
           <VideosGridLayout />
         </div>
