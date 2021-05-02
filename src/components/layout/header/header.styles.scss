@@ -51,7 +51,31 @@ header {
       }
     }
   }
+  .dropdown:hover .dropdown-content {
+    display: block;
+    cursor: pointer;
+    box-shadow: none;
+    border-bottom: 1px solid $dark-channel-text;
+  }
   .menu-items {
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: $white;
+      min-width: 2rem;
+      right: 1.5%;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .sign-out-btn {
+      font-family: inherit;
+      outline: none;
+      font-size: 1.6rem;
+      padding: 1.8rem 0.8rem 0.8rem 0.8rem;
+      background: none;
+    }
+
     img {
       @include set-block-image(4rem, 4rem);
       border-radius: 50%;
