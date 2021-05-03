@@ -6,6 +6,7 @@ import {
   resetVideos,
   searchVideosByTerm,
 } from "../../features/getVideosByTermSlice";
+import useVideos from "../../hooks/useVideos";
 import "../homeScreen/homeScreen.styles.scss";
 
 export default function SearchResultsScreen(props) {
@@ -13,14 +14,16 @@ export default function SearchResultsScreen(props) {
   const { theme: UITheme } = useSelector((state) => state.theme);
 
   const dispatch = useDispatch();
+  const term = new URL(props.location.href).searchParams.get("search_term");
 
-  useEffect(() => {
-    const term = new URL(props.location.href).searchParams.get("search_term");
-    console.log({ term });
-    // dispatch(searchVideosByTerm(term));
+  useVideos(term);
 
-    return () => dispatch(resetVideos());
-  }, [props.location, dispatch]);
+  // useEffect(() => {
+  //   const term = new URL(props.location.href).searchParams.get("search_term");
+  //   dispatch(searchVideosByTerm(term));
+
+  //   return () => dispatch(resetVideos());
+  // }, [props.location, dispatch]);
 
   return (
     <div

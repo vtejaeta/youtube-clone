@@ -9,7 +9,9 @@ import { getFromLocalStorage } from "../../../utils/localStorage.utils";
 import { resetVideos } from "../../../features/getVideosByTermSlice";
 
 export default function Header({ userPhoto, userEmail, userName }) {
-  const [theme, setTheme] = useState(getFromLocalStorage("_theme") || "light");
+  const [theme, setTheme] = useState(
+    () => getFromLocalStorage("_theme") || "light"
+  );
   const [searchTerm, setSearchTerm] = useState("");
 
   const { theme: UITheme } = useSelector((state) => state.theme);
@@ -41,7 +43,6 @@ export default function Header({ userPhoto, userEmail, userName }) {
       dispatch(setToggleTheme(theme));
     }
   }, [theme, dispatch, UITheme]);
-  console.log({ searchTerm });
 
   return (
     <header className={UITheme === "dark" ? "dark" : ""}>
