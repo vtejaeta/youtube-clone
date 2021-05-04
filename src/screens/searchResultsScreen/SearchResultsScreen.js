@@ -1,20 +1,20 @@
+import { navigate } from "@reach/router";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Header from "../../components/layout/header/Header";
+import SkeletonVideoGrid from "../../components/layout/skeletons/SkeletonVideoGrid";
 import VideosGridLayout from "../../components/layout/videosGridLayout/VideosGridLayout";
-import {
-  resetVideos,
-  searchVideosByTerm,
-} from "../../features/getVideosByTermSlice";
 import useVideos from "../../hooks/useVideos";
+import useVideosStateFromRedux from "../../hooks/useVideosStateFromRedux";
 import "../homeScreen/homeScreen.styles.scss";
 
 export default function SearchResultsScreen(props) {
   const { userName, userEmail, userPhoto } = useSelector((state) => state.user);
   const { theme: UITheme } = useSelector((state) => state.theme);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const term = new URL(props.location.href).searchParams.get("search_term");
+  const { loading } = useVideosStateFromRedux();
 
   useVideos(term);
 
@@ -25,7 +25,11 @@ export default function SearchResultsScreen(props) {
   //   return () => dispatch(resetVideos());
   // }, [props.location, dispatch]);
 
-  return (
+  useEffect(() => {
+    !userName && navigate("/");
+  }, [userName]);
+
+  return userName ? (
     <div
       className={
         UITheme === "dark" ? "home-screen-cont dark" : "home-screen-cont"
@@ -37,10 +41,16 @@ export default function SearchResultsScreen(props) {
           userEmail={userEmail}
           userName={userName}
         />
-        <div className="video-section-cont">
-          <VideosGridLayout />
-        </div>
+        {loading ? (
+          <SkeletonVideoGrid />
+        ) : (
+          <div className="video-section-cont">
+            <VideosGridLayout />
+          </div>
+        )}
       </div>
     </div>
+  ) : (
+    <p>Loading...</p>
   );
 }
