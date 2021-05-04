@@ -7,6 +7,7 @@ import "./header.styles.scss";
 import { setToggleTheme } from "../../../features/themeSlice";
 import { getFromLocalStorage } from "../../../utils/localStorage.utils";
 import { resetVideos } from "../../../features/getVideosByTermSlice";
+import { logUserOut } from "../../../features/userSlice";
 
 export default function Header({ userPhoto, userEmail, userName }) {
   const [theme, setTheme] = useState(
@@ -33,9 +34,11 @@ export default function Header({ userPhoto, userEmail, userName }) {
 
   function formHandler(e) {
     e.preventDefault();
-    dispatch(resetVideos());
-    searchTerm.trim() && navigate(`/results?search_term=${searchTerm.trim()}`);
-    setSearchTerm("");
+    if (searchTerm.trim()) {
+      dispatch(resetVideos());
+      navigate(`/results?search_term=${searchTerm.trim()}`);
+      setSearchTerm("");
+    }
   }
 
   useEffect(() => {
@@ -46,7 +49,7 @@ export default function Header({ userPhoto, userEmail, userName }) {
 
   return (
     <header className={UITheme === "dark" ? "dark" : ""}>
-      <Link to="/home" onClick={() => dispatch(resetVideos())}>
+      <Link to="/home">
         <div className="main-logo-cont">
           <img src={youtubeLight} alt="youtube-logo" className="header-logo" />
         </div>
@@ -84,7 +87,9 @@ export default function Header({ userPhoto, userEmail, userName }) {
       <div className="menu-items dropdown">
         <img src={userPhoto} alt="User info" />
         <div className="dropdown-content">
-          <p className="sign-out-btn">Sign out</p>
+          <p className="sign-out-btn" onClick={(e) => dispatch(logUserOut())}>
+            Sign out
+          </p>
         </div>
       </div>
     </header>
