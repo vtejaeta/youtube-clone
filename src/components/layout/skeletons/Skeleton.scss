@@ -64,6 +64,10 @@
   padding: 12.5rem 0;
   margin: 0 3.5rem;
   // border-top: 4px solid rgba($color: $black, $alpha: 0.1);
+
+  @include set-very-small-screen {
+    margin: 0 1.5rem;
+  }
 }
 
 .videos-section-cont-skeleton.dark,
