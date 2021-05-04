@@ -1,13 +1,13 @@
 import React from "react";
-import VideoCard from "../videoCard/VideoCard";
 import moment from "moment";
-import { useSelector } from "react-redux";
+import VideoCard from "../videoCard/VideoCard";
+import useVideosStateFromRedux from "../../../hooks/useVideosStateFromRedux";
 
 export default function VideosGridLayout() {
-  const { videosByTerm } = useSelector((state) => state.getVideosByTerm);
+  const { videosByTerm } = useVideosStateFromRedux();
 
   function renderVideos() {
-    return videosByTerm.map(({ snippet, id }) => {
+    return videosByTerm?.map(({ snippet, id }) => {
       const timeFromNow = moment(
         new Date(snippet.publishTime).toLocaleString()
       ).fromNow();
