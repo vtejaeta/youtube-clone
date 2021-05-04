@@ -43,18 +43,27 @@ const userSlice = createSlice({
 });
 
 export const authenticateUser = () => async (dispatch) => {
-  const { user } = await auth.signInWithPopup(provider);
-  dispatch(
-    setActiveUser({
-      userName: user.displayName,
-      userEmail: user.email,
-      userPhoto: user.photoURL,
-    })
-  );
+  try {
+    const { user } = await auth.signInWithPopup(provider);
+    dispatch(
+      setActiveUser({
+        userName: user.displayName,
+        userEmail: user.email,
+        userPhoto: user.photoURL,
+      })
+    );
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const logUserOut = () => async (dispatch) => {
-  dispatch(setUserLogOutState());
+  try {
+    await auth.signOut();
+    dispatch(setUserLogOutState());
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const { setActiveUser, setUserLogOutState } = userSlice.actions;
