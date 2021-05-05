@@ -8,12 +8,14 @@ import { setToggleTheme } from "../../../features/themeSlice";
 import { getFromLocalStorage } from "../../../utils/localStorage.utils";
 import { resetVideos } from "../../../features/getVideosByTermSlice";
 import { logUserOut } from "../../../features/userSlice";
+import useUserStateFromRedux from "../../../hooks/useUserStateFromRedux";
 
-export default function Header({ userPhoto, userEmail, userName }) {
+export default function Header() {
   const [theme, setTheme] = useState(
     () => getFromLocalStorage("_theme") || "light"
   );
   const [searchTerm, setSearchTerm] = useState("");
+  const { userPhoto, userName } = useUserStateFromRedux();
 
   const { theme: UITheme } = useSelector((state) => state.theme);
 
@@ -87,7 +89,13 @@ export default function Header({ userPhoto, userEmail, userName }) {
       <div className="menu-items dropdown">
         <img src={userPhoto} alt="User info" />
         <div className="dropdown-content">
-          <p className="sign-out-btn" onClick={(e) => dispatch(logUserOut())}>
+          <p
+            className="sign-out-btn"
+            onClick={(e) => {
+              dispatch(logUserOut());
+              navigate("/");
+            }}
+          >
             Sign out
           </p>
         </div>
