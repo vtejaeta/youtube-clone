@@ -1,6 +1,6 @@
 import React from "react";
 import SkeletonElement from "./SkeletonElement";
-import "../videoCard/videoCard.styles.scss";
+import "../../shared/homeScreenVideoCard/homeScreenVideoCard.styles.scss";
 import { useSelector } from "react-redux";
 
 export default function SkeletonVideoCard() {
