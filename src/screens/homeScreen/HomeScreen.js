@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Header from "../../components/layout/header/Header";
-import VideosGridLayout from "../../components/layout/videosGridLayout/VideosGridLayout";
+import VideosLayout from "../../components/layout/videosLayout/VideosLayout";
 import useVideos from "../../hooks/useVideos";
 import SkeletonVideoGrid from "../../components/layout/skeletons/SkeletonVideoGrid";
+import HomeScreenVideoCard from "../../components/shared/homeScreenVideoCard/HomeScreenVideoCard";
 import "./homeScreen.styles.scss";
 import useVideosStateFromRedux from "../../hooks/useVideosStateFromRedux";
 
@@ -25,7 +26,7 @@ export default function HomeScreen() {
           <SkeletonVideoGrid />
         ) : (
           <div className="video-section-cont">
-            <VideosGridLayout />
+            <VideosLayout Component={HomeScreenVideoCard} />
           </div>
         )}
       </div>
