@@ -1,1 +1,10 @@
 @import "../../styles/main.scss";
+
+.video-section-cont.search-results {
+  @include set-flex(column, center, flex-start);
+
+  .video-container {
+    width: 100%;
+    @include set-flex(row, flex-start, flex-start);
+  }
+}
