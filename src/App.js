@@ -15,7 +15,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) =>
 function App() {
   return (
     <Router>
-      <SignInScreen path="/" default />
+      <SignInScreen path="/" />
       <ProtectedRoute component={HomeScreen} path="/home" />
       <ProtectedRoute component={SearchResultsScreen} path="/results" />
     </Router>
