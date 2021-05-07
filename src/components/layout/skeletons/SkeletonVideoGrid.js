@@ -1,9 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import SkeletonVideoCard from "./SkeletonVideoCard";
+import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
 
 export default function SkeletonVideoGrid() {
-  const { theme: UITheme } = useSelector((state) => state.theme);
+  const { theme: UITheme } = useThemeStateFromRedux();
 
   function renderSkeletonvideoGrid() {
     return Array(8)

@@ -1,8 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import VideoThumbnail from "../videoThumbnail/VideoThumbnail";
 import HomeScreenVideoDetails from "../homeScreenVideoDetails/HomeScreenVideoDetails";
 import "./homeScreenVideoCard.styles.scss";
+import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
 
 export default function HomeScreenVideoCard({
   timeFromNow,
@@ -11,7 +11,7 @@ export default function HomeScreenVideoCard({
   channelTitle,
   videoId,
 }) {
-  const { theme: UITheme } = useSelector((state) => state.theme);
+  const { theme: UITheme } = useThemeStateFromRedux();
 
   return (
     <div

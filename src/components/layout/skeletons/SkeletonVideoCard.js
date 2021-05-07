@@ -1,10 +1,10 @@
 import React from "react";
 import SkeletonElement from "./SkeletonElement";
 import "../../shared/homeScreenVideoCard/homeScreenVideoCard.styles.scss";
-import { useSelector } from "react-redux";
+import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
 
 export default function SkeletonVideoCard() {
-  const { theme: UITheme } = useSelector((state) => state.theme);
+  const { theme: UITheme } = useThemeStateFromRedux();
 
   return (
     <div

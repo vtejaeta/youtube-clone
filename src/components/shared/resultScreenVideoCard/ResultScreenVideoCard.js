@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import VideoThumbnail from "../videoThumbnail/VideoThumbnail";
 import ResultScreenVideoDetails from "../resultScreenVideoDetails/ResultScreenVideoDetails";
+import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
+import "./resultScreenVideoCard.styles.scss";
 
 export default function ResultScreenVideoCard({
   timeFromNow,
@@ -9,13 +11,16 @@ export default function ResultScreenVideoCard({
   title,
   channelTitle,
   videoId,
+  description,
 }) {
-  const { theme: UITheme } = useSelector((state) => state.theme);
+  const { theme: UITheme } = useThemeStateFromRedux();
 
   return (
     <div
       className={
-        UITheme === "dark" ? " video-container dark" : "video-container"
+        UITheme === "dark"
+          ? " result-video-container dark"
+          : "result-video-container"
       }
     >
       <VideoThumbnail
@@ -28,6 +33,7 @@ export default function ResultScreenVideoCard({
         channelTitle={channelTitle}
         timeFromNow={timeFromNow}
         videoId={videoId}
+        description={description}
       />
     </div>
   );
