@@ -1,0 +1,30 @@
+@import "../../../styles/main.scss";
+
+.result-video-container {
+  @include set-flex(row, flex-start, flex-start);
+
+  .video-thumbnail-image {
+    @include set-block-image(20rem, 35rem);
+    background: $thumbnail-bg;
+  }
+
+  @include set-medium-screen {
+    @include set-flex(column, flex-start, flex-start);
+    max-width: 35rem;
+    margin: 0 auto;
+  }
+}
+
+.result-video-container.dark {
+  .video-title {
+    color: $white;
+  }
+
+  .video-thumbnail-image {
+    background: $dark-thumbnail-bg;
+  }
+
+  .results-video-author-details {
+    color: $dark-channel-text;
+  }
+}
