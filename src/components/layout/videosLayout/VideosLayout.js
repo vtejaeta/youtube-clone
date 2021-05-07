@@ -10,7 +10,6 @@ export default function VideosLayout({ Component }) {
       const timeFromNow = moment(
         new Date(snippet.publishTime).toLocaleString()
       ).fromNow();
-      console.log(snippet.description);
       return (
         <Component
           key={id.videoId}

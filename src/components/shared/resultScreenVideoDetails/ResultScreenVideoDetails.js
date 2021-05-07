@@ -10,7 +10,7 @@ export default function ResultScreenVideoDetails({
   videoId,
 }) {
   return (
-    <div className="video-author-details">
+    <div className="results-video-author-details">
       <Link to={`/watch?v=${videoId}`} className="video-title">
         {title}
       </Link>
