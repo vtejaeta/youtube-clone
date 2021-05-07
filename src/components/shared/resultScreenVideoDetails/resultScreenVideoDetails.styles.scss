@@ -1,0 +1,36 @@
+@import "../../../styles/main.scss";
+
+.results-video-author-details {
+  @include set-flex(column, center, flex-start);
+  margin-left: 2rem;
+  color: $light-text-color;
+  font-size: 1.2rem;
+
+  .video-title {
+    font-size: 1.8rem;
+  }
+
+  .channel-details {
+    @include set-flex;
+    margin: 2rem 0 1.5rem;
+
+    .channel-logo {
+      @include set-block-image(2.4rem, 2.4rem);
+      border-radius: 50%;
+      margin-right: 1rem;
+    }
+  }
+
+  a {
+    color: $black;
+    text-decoration: none;
+  }
+
+  .description {
+    width: 80%;
+  }
+
+  @include set-medium-screen {
+    margin: 0;
+  }
+}

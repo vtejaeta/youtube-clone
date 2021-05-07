@@ -109,6 +109,11 @@ header.dark {
   .welcome-text {
     color: rgba($color: $white, $alpha: 0.88);
   }
+
+  .sign-out-btn {
+    background: $dark-header-bg;
+    color: $white;
+  }
 }
 
 .switch {
