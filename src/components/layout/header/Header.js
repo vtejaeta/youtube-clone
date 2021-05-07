@@ -9,6 +9,7 @@ import { getFromLocalStorage } from "../../../utils/localStorage.utils";
 import { resetVideos } from "../../../features/getVideosByTermSlice";
 import { logUserOut } from "../../../features/userSlice";
 import useUserStateFromRedux from "../../../hooks/useUserStateFromRedux";
+import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
 
 export default function Header() {
   const [theme, setTheme] = useState(
@@ -17,7 +18,7 @@ export default function Header() {
   const [searchTerm, setSearchTerm] = useState("");
   const { userPhoto, userName } = useUserStateFromRedux();
 
-  const { theme: UITheme } = useSelector((state) => state.theme);
+  const { theme: UITheme } = useThemeStateFromRedux();
 
   const dispatch = useDispatch();
 

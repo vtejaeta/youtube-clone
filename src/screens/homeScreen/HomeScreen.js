@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Header from "../../components/layout/header/Header";
 import VideosLayout from "../../components/layout/videosLayout/VideosLayout";
 import useVideos from "../../hooks/useVideos";
@@ -7,9 +6,10 @@ import SkeletonVideoGrid from "../../components/layout/skeletons/SkeletonVideoGr
 import HomeScreenVideoCard from "../../components/shared/homeScreenVideoCard/HomeScreenVideoCard";
 import "./homeScreen.styles.scss";
 import useVideosStateFromRedux from "../../hooks/useVideosStateFromRedux";
+import useThemeStateFromRedux from "../../hooks/useThemeStateFromRedux";
 
 export default function HomeScreen() {
-  const { theme: UITheme } = useSelector((state) => state.theme);
+  const { theme: UITheme } = useThemeStateFromRedux();
   const { loading } = useVideosStateFromRedux();
 
   useVideos("ReactJS");

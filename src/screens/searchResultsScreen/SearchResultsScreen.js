@@ -1,16 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Header from "../../components/layout/header/Header";
 import SkeletonVideoGrid from "../../components/layout/skeletons/SkeletonVideoGrid";
 import VideosLayout from "../../components/layout/videosLayout/VideosLayout";
 import ResultScreenVideoCard from "../../components/shared/resultScreenVideoCard/ResultScreenVideoCard";
 import useVideos from "../../hooks/useVideos";
 import useVideosStateFromRedux from "../../hooks/useVideosStateFromRedux";
+import useThemeStateFromRedux from "../../hooks/useThemeStateFromRedux";
 import "../homeScreen/homeScreen.styles.scss";
 import "../searchResultsScreen/searchResultsScreen.styles.scss";
 
 export default function SearchResultsScreen(props) {
-  const { theme: UITheme } = useSelector((state) => state.theme);
+  const { theme: UITheme } = useThemeStateFromRedux();
 
   const term = new URL(props.location.href).searchParams.get("search_term");
   const { loading } = useVideosStateFromRedux();
