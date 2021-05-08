@@ -11,5 +11,7 @@ export default function useVideos(searchTerm = "ReactJS") {
   useEffect(() => {
     dispatch(resetVideos());
     dispatch(searchVideosByTerm(searchTerm));
+
+    return () => dispatch(resetVideos());
   }, [dispatch, searchTerm]);
 }
