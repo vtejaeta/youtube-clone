@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, navigate } from "@reach/router";
 import youtubeLight from "../../../assets/youtube-light.png";
 import searchIcon from "../../../assets/search-icon.svg";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./header.styles.scss";
 import { setToggleTheme } from "../../../features/themeSlice";
 import { getFromLocalStorage } from "../../../utils/localStorage.utils";
