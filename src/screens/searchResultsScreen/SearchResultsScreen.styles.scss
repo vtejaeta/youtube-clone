@@ -2,9 +2,91 @@
 
 .video-section-cont.search-results {
   @include set-flex(column, center, flex-start);
+  padding: 2.5rem 0;
 
   .video-container {
     width: 100%;
     @include set-flex(row, flex-start, flex-start);
+  }
+}
+
+.main-videos-cont {
+  padding: 10rem 0;
+  min-height: 100vh;
+
+  .search-term-desc {
+    font-size: 1.7rem;
+    margin-left: 4rem;
+  }
+}
+
+.empty-results {
+  font-size: 1.6rem;
+  text-align: center;
+  align-self: center;
+  text-transform: uppercase;
+  margin-top: -5rem;
+}
+
+.empty-results-logo {
+  @include set-block-image(37rem, 37rem);
+  align-self: center;
+
+  @include set-small-screen {
+    @include set-block-image(30rem, 28rem);
+  }
+}
+
+.home-screen-cont.dark {
+  .search-term-desc {
+    color: $white;
+  }
+  .empty-results {
+    color: $white;
+  }
+  .empty-results-logo {
+    content: url("../../assets/Empty-pana_dark.svg");
+  }
+}
+
+// === SKELETON STYLING ===
+.search-results-video-container-skeleton {
+  padding: 10rem 0;
+  @include set-flex(column, center, flex-start);
+}
+
+.search-results-video-container-skeleton.dark {
+  .skeleton {
+    background: $dark-skeleton-bg;
+  }
+}
+
+.skeleton-search-results {
+  @include set-flex(row, flex-start, flex-start);
+  margin: 3rem 2.2rem;
+  width: 90%;
+
+  .skeleton.thumbnail {
+    @include set-block-image(2rem, 3.5rem);
+    margin-right: 2rem;
+  }
+
+  .skeleton-video-author-details {
+    width: 45%;
+    .skeleton.meta-text {
+      margin-top: 1rem;
+    }
+
+    .skeleton-channel-details {
+      @include set-flex(row, flex-start);
+      .skeleton.text {
+        width: 25%;
+        margin-left: 1rem;
+      }
+    }
+
+    .skeleton.text {
+      width: 80%;
+    }
   }
 }
