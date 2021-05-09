@@ -4,6 +4,7 @@ import SignInScreen from "./screens/signInScreen/SignInScreen";
 import HomeScreen from "./screens/homeScreen/HomeScreen";
 import SearchResultsScreen from "./screens/searchResultsScreen/SearchResultsScreen";
 import useUserStateFromRedux from "./hooks/useUserStateFromRedux";
+import WatchVideoScreen from "./screens/watchVideoScreen/WatchVideoScreen";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const { userEmail } = useUserStateFromRedux();
@@ -29,6 +30,7 @@ function App() {
       <DefaultRoute component={SignInScreen} path="/" />
       <ProtectedRoute component={HomeScreen} path="/home" />
       <ProtectedRoute component={SearchResultsScreen} path="/results" />
+      <ProtectedRoute component={WatchVideoScreen} path="/watch" />
     </Router>
   );
 }
