@@ -11,7 +11,52 @@
   @include set-medium-screen {
     @include set-flex(column, flex-start, flex-start);
     max-width: 35rem;
-    margin: 0 auto;
+    // margin: 0 auto;
+
+    .results-video-author-details {
+      position: relative;
+    }
+
+    .channel-details {
+      margin: 0;
+      margin-left: 5rem;
+      order: 2;
+    }
+
+    .video-title {
+      font-size: 1.4rem;
+      margin-top: 1.2rem;
+      margin-left: 5.2rem;
+    }
+
+    .description {
+      display: none;
+    }
+
+    .channel-details .channel-logo {
+      @include set-block-image(4rem, 4rem);
+      position: absolute;
+      top: 10%;
+      left: 1%;
+    }
+
+    .video-metadata {
+      order: 3;
+      margin-left: 5rem;
+    }
+  }
+
+  @media only screen and (max-width: 402px) {
+    max-width: 25rem;
+    .video-thumbnail-image {
+      @include set-block-image(15rem, 29rem);
+    }
+  }
+
+  @media only screen and (max-width: 350px) {
+    .video-thumbnail-image {
+      @include set-block-image(15rem, 25rem);
+    }
   }
 }
 
