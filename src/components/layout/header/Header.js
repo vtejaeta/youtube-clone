@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, navigate } from "@reach/router";
 import youtubeLight from "../../../assets/youtube-light.png";
 import searchIcon from "../../../assets/search-icon.svg";
+import backArrowBlack from "../../../assets/arrow_back_black.svg";
+import backArrowWhite from "../../../assets/arrow_back_white.svg";
 import { useDispatch } from "react-redux";
 import "./header.styles.scss";
 import { setToggleTheme } from "../../../features/themeSlice";
@@ -15,6 +17,7 @@ export default function Header() {
   const [theme, setTheme] = useState(
     () => getFromLocalStorage("_theme") || "light"
   );
+  const headerRef = React.useRef(null);
   const [searchTerm, setSearchTerm] = useState("");
   const { userPhoto, userName } = useUserStateFromRedux();
 
@@ -35,6 +38,15 @@ export default function Header() {
     setSearchTerm(e.target.value);
   }
 
+  function activeSearchHandler() {
+    headerRef.current.className =
+      UITheme === "dark" ? "dark active-search" : "active-search";
+  }
+
+  function resetActiveSearch() {
+    headerRef.current.className = UITheme === "dark" ? "dark" : "";
+  }
+
   function formHandler(e) {
     e.preventDefault();
     if (searchTerm.trim()) {
@@ -51,12 +63,19 @@ export default function Header() {
   }, [theme, dispatch, UITheme]);
 
   return (
-    <header className={UITheme === "dark" ? "dark" : ""}>
-      <Link to="/home">
+    <header className={UITheme === "dark" ? "dark" : ""} ref={headerRef}>
+      <Link to="/home" className="main-logo-link-cont">
         <div className="main-logo-cont">
           <img src={youtubeLight} alt="youtube-logo" className="header-logo" />
         </div>
       </Link>
+      <button type="button" className="back-arrow" onClick={resetActiveSearch}>
+        <img
+          src={backArrowBlack}
+          alt="back arrow"
+          className="back-arrow-icon"
+        />{" "}
+      </button>
       <form className="search-box-form" onSubmit={formHandler}>
         <input
           type="search"
@@ -74,6 +93,13 @@ export default function Header() {
           />
         </button>
       </form>
+      <button
+        type="button"
+        className="dummy search-btn"
+        onClick={activeSearchHandler}
+      >
+        <img src={searchIcon} alt="search button" className="search-btn-icon" />
+      </button>
       <p className="welcome-text">
         Hello <strong>{userName.toUpperCase()}</strong>
       </p>
