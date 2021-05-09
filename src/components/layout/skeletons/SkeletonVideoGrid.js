@@ -1,5 +1,6 @@
 import React from "react";
 import SkeletonVideoCard from "./SkeletonVideoCard";
+import { v4 as uuidv4 } from "uuid";
 import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
 
 export default function SkeletonVideoGrid() {
@@ -9,7 +10,7 @@ export default function SkeletonVideoGrid() {
     return Array(8)
       .fill(1)
       .map(() => {
-        return <SkeletonVideoCard key={Math.random()} />;
+        return <SkeletonVideoCard key={uuidv4()} />;
       });
   }
   return (
