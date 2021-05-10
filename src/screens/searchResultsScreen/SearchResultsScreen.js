@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../../components/layout/header/Header";
-import SkeletonVideoGrid from "../../components/layout/skeletons/SkeletonVideoGrid";
 import VideosLayout from "../../components/layout/videosLayout/VideosLayout";
 import ResultScreenVideoCard from "../../components/shared/resultScreenVideoCard/ResultScreenVideoCard";
 import useVideos from "../../hooks/useVideos";
