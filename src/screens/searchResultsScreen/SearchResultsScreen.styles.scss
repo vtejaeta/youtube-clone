@@ -67,7 +67,7 @@
   width: 90%;
 
   .skeleton.thumbnail {
-    @include set-block-image(2rem, 3.5rem);
+    @include set-block-image(20rem, 35rem);
     margin-right: 2rem;
   }
 
@@ -87,6 +87,54 @@
 
     .skeleton.text {
       width: 80%;
+    }
+  }
+
+  @include set-medium-screen {
+    @include set-flex(column, flex-start, flex-start);
+
+    .skeleton-video-author-details {
+      position: relative;
+      margin-top: 1.1rem;
+    }
+
+    .skeleton-channel-details .skeleton.avatar {
+      @include set-block-image(4.5rem, 4.5rem);
+      position: absolute;
+      top: 1%;
+      left: 1%;
+    }
+    .skeleton.title,
+    .skeleton.meta-text {
+      margin-left: 6rem;
+    }
+    .skeleton.title {
+      width: 15rem;
+    }
+    .skeleton.meta-text {
+      width: 5rem;
+    }
+    .skeleton.text {
+      display: none;
+    }
+    .skeleton-channel-details .skeleton.text {
+      display: block;
+      margin-left: 6rem !important;
+      width: 10rem !important;
+    }
+  }
+
+  @media only screen and (max-width: 402px) {
+    max-width: 25rem;
+    margin: 3rem 3.2rem;
+    .skeleton.thumbnail {
+      @include set-block-image(15rem, 29rem);
+    }
+  }
+
+  @media only screen and (max-width: 350px) {
+    .skeleton.thumbnail {
+      @include set-block-image(15rem, 25rem);
     }
   }
 }
