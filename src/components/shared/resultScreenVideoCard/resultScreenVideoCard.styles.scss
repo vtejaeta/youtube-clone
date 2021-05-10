@@ -15,6 +15,7 @@
 
     .results-video-author-details {
       position: relative;
+      margin-top: 0.8rem;
     }
 
     .channel-details {
@@ -51,11 +52,23 @@
     .video-thumbnail-image {
       @include set-block-image(15rem, 29rem);
     }
+
+    .channel-details .channel-logo {
+      @include set-block-image(3rem, 3rem);
+      top: 25%;
+    }
   }
 
   @media only screen and (max-width: 350px) {
     .video-thumbnail-image {
       @include set-block-image(15rem, 25rem);
+    }
+  }
+
+  @media only screen and (max-width: 290px) {
+    max-width: 22rem;
+    .video-thumbnail-image {
+      @include set-block-image(15rem, 22rem);
     }
   }
 }
