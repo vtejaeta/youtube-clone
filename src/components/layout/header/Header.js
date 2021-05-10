@@ -116,7 +116,7 @@ export default function Header() {
       <div className="menu-items dropdown">
         <img src={userPhoto} alt="User info" />
         <div className="dropdown-content">
-          <p
+          <button
             className="sign-out-btn"
             onClick={(e) => {
               dispatch(logUserOut());
@@ -124,7 +124,7 @@ export default function Header() {
             }}
           >
             Sign out
-          </p>
+          </button>
         </div>
       </div>
     </header>
