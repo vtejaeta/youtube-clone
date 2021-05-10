@@ -105,7 +105,9 @@ header {
     display: block;
     cursor: pointer;
     box-shadow: none;
-    border-bottom: 1px solid $dark-channel-text;
+    border: none;
+    // border-bottom: 1px solid $dark-channel-text;
+    z-index: 0;
   }
   .menu-items {
     .dropdown-content {
@@ -115,7 +117,7 @@ header {
       min-width: 2rem;
       right: 1.5%;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
+      z-index: 0;
     }
 
     .sign-out-btn {
@@ -124,6 +126,8 @@ header {
       font-size: 1.6rem;
       padding: 1.8rem 0.8rem 0.8rem 0.8rem;
       background: none;
+      border: 1px solid $white;
+      border-bottom: 1px solid $dark-channel-text;
     }
 
     img {
@@ -186,6 +190,8 @@ header.dark {
   .sign-out-btn {
     background: $dark-header-bg;
     color: $white;
+    border: 1px solid $dark-header-bg;
+    border-bottom: 1px solid $dark-channel-text;
   }
 }
 
