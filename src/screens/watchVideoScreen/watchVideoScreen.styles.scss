@@ -1,5 +1,9 @@
+@import "../../styles/main.scss";
+
 .whole-video-wrapper {
   padding-top: 10rem;
+  min-height: 100vh;
+  background: $videos-grid-bg;
 }
 
 .main-video-player-cont {
@@ -16,7 +20,8 @@
   left: 0;
   bottom: 0;
   right: 0;
-  width: 50%;
-  height: 50%;
+  max-width: 55rem;
+  min-width: 45rem;
+  height: 29rem;
   margin-left: 2rem;
 }
