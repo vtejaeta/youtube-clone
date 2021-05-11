@@ -1,27 +1,42 @@
 @import "../../styles/main.scss";
 
 .whole-video-wrapper {
+  padding: 3rem;
   padding-top: 10rem;
   min-height: 100vh;
   background: $videos-grid-bg;
 }
 
-.main-video-player-cont {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+.grid-cont {
+  max-width: 104rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(auto, 1fr));
+  grid-template-rows: 1fr;
+  grid-template-areas: ". .";
+  grid-gap: 3rem;
+  border: 1px solid rgb(5, 48, 241);
+
+  @include set-medium-screen {
+    grid-template-rows: auto auto;
+    grid-template-columns: none;
+  }
 }
 
-/* Then style the iframe to fit in the container div with full height and width */
+.main-video-player-cont {
+  height: 36rem;
+  border: 2px solid black;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
 .main-video-player {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  max-width: 55rem;
-  min-width: 45rem;
-  height: 29rem;
-  margin-left: 2rem;
+  @include set-block-image;
+}
+
+.next-videos-cont {
+  border: 2px solid crimson;
+  grid-column-start: 4;
+  grid-column-end: 6;
 }
