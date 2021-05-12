@@ -2,7 +2,7 @@ import React from "react";
 import getSearchParam from "../../utils/searchParam.utils";
 import Header from "../../components/layout/header/Header";
 import "./watchVideoScreen.styles.scss";
-import HomeScreenVideoCard from "../../components/shared/homeScreenVideoCard/HomeScreenVideoCard";
+import ResultScreenVideoCard from "../../components/shared/resultScreenVideoCard/ResultScreenVideoCard";
 import VideosLayout from "../../components/layout/videosLayout/VideosLayout";
 
 export default function WatchVideoScreen(props) {
@@ -14,16 +14,17 @@ export default function WatchVideoScreen(props) {
       <div className="whole-video-wrapper">
         <div className="grid-cont">
           <div className="main-video-player-cont">
-            {/* <iframe
-            src={`https://www.youtube.com/embed/${term}`}
-            title="video player"
-            frameBorder="0"
-            allowFullScreen
-            className="main-video-player"
-          /> */}
+            <iframe
+              src={`https://www.youtube.com/embed/${term}`}
+              title="video player"
+              frameBorder="0"
+              allowFullScreen
+              className="main-video-player"
+            />
           </div>
           <div className="next-videos-cont">
-            <VideosLayout Component={HomeScreenVideoCard} />
+            <button className="suggestion-text">Suggestion Videos</button>
+            <VideosLayout Component={ResultScreenVideoCard} />
           </div>
         </div>
       </div>
