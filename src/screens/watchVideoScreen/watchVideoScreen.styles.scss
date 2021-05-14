@@ -16,12 +16,21 @@
   grid-template-rows: 1fr;
   grid-template-areas: ". .";
   grid-gap: 3rem;
+
+  @include set-medium-screen {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+  }
 }
 
 .main-video-player-cont {
   height: 32rem;
   grid-column-start: 1;
   grid-column-end: 4;
+
+  @include set-medium-screen {
+    grid-area: 1 / 1 / 4 / 6;
+  }
 }
 
 .main-video-player {
@@ -53,8 +62,13 @@
 
   .result-video-container {
     margin-bottom: 1.2rem;
+
     .video-thumbnail-image {
       @include set-block-image(10rem, 17rem);
+
+      @include set-medium-screen {
+        @include set-block-image(20rem, 37rem);
+      }
     }
 
     .results-video-author-details {
@@ -69,6 +83,19 @@
         margin: 0;
         .channel-logo {
           display: none;
+        }
+      }
+
+      @include set-medium-screen {
+        justify-content: flex-start;
+        & > * {
+          margin: 0;
+        }
+
+        .video-title,
+        .video-channel-name,
+        .video-metadata {
+          font-size: 1.6rem;
         }
       }
     }
@@ -89,6 +116,16 @@
     .description {
       display: none;
     }
+
+    @include set-medium-screen {
+      flex-direction: row;
+      max-width: 75rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  @include set-medium-screen {
+    grid-area: 4 / 1 / 6 / 6;
   }
 }
 
