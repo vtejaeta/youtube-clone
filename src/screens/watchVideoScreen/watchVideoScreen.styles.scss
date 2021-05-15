@@ -67,7 +67,10 @@
       @include set-block-image(10rem, 17rem);
 
       @include set-medium-screen {
-        @include set-block-image(20rem, 37rem);
+        // @include set-block-image(20rem, 35rem);
+        @include set-block-image;
+        min-width: 19rem;
+        min-height: 13rem;
       }
     }
 
@@ -87,15 +90,79 @@
       }
 
       @include set-medium-screen {
-        justify-content: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-left: 1.3rem;
+        margin-top: 0.6rem;
+        color: #555;
+        font-size: 1.2rem;
+        flex: 1 1 auto;
+        width: 75%;
+        // width: 20rem;
+        // max-width: 100%;
+        position: static;
+
         & > * {
           margin: 0;
         }
 
-        .video-title,
-        .video-channel-name,
         .video-metadata {
-          font-size: 1.6rem;
+          order: 2;
+          // margin-top: 0.6r em;
+        }
+
+        .channel-details {
+          margin: 1.2rem 0 1.2rem 0;
+          .channel-logo {
+            position: static;
+            @include set-block-image(2.4rem, 2.4rem);
+          }
+          .video-channel-name {
+            font-size: 1.2rem;
+          }
+        }
+
+        .description {
+          display: block;
+          order: 4;
+          margin-top: 0.6rem;
+        }
+      }
+
+      @media only screen and (max-width: 550px) {
+        width: 100%;
+        margin: 1.3rem 0rem;
+        position: relative;
+
+        .channel-details {
+          display: block;
+          margin: 0;
+        }
+
+        .video-title,
+        .video-metadata,
+        .channel-details .video-channel-name {
+          margin-left: 4.2rem;
+        }
+
+        .channel-details .channel-logo {
+          position: absolute;
+          @include set-block-image(3.5rem, 3.5rem);
+          top: 5%;
+          left: 0%;
+        }
+
+        .video-title {
+          order: 1;
+        }
+
+        .video-metadata {
+          order: 3;
+        }
+        .channel-details .video-channel-name {
+          order: 2;
         }
       }
     }
@@ -119,8 +186,31 @@
 
     @include set-medium-screen {
       flex-direction: row;
-      max-width: 75rem;
+      // max-width: 75rem;
       font-size: 1.6rem;
+      max-width: 100%;
+      margin: 1.6rem 0 2.2rem;
+
+      .video-thumbnail {
+        flex: 0 0 50%;
+        @include set-flex;
+        align-self: stretch;
+      }
+    }
+
+    @media only screen and (max-width: 550px) {
+      flex-direction: column;
+
+      & > * {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .results-video-author-details {
+        .description {
+          display: none;
+        }
+      }
     }
   }
 
@@ -137,6 +227,90 @@
   .skeleton-search-results {
     flex-direction: row;
     margin: 0.5rem 0;
+
+    @include set-medium-screen {
+      .skeleton.thumbnail {
+        flex: 0 0 50%;
+        @include set-block-image(100%, 100%);
+        min-height: 13rem !important;
+        min-width: 19rem !important;
+      }
+
+      .skeleton-video-author-details {
+        .skeleton.title {
+          width: 75%;
+        }
+        .skeleton.meta-text {
+          width: 30%;
+        }
+
+        .skeleton-channel-details {
+          align-items: flex-start;
+          .skeleton.text {
+            margin: 0 1.5rem !important;
+            align-self: center;
+          }
+          .skeleton.avatar {
+            display: block;
+            position: static;
+            margin: 0;
+            @include set-block-image(3.5rem, 3.5rem);
+          }
+
+          & + .skeleton.text {
+            display: block;
+          }
+        }
+      }
+    }
+
+    @media only screen and (max-width: 550px) {
+      flex-direction: column;
+      width: 100%;
+      // height: 35rem;
+      max-width: 100%;
+      margin: 1.6rem 0;
+
+      .skeleton.thumbnail {
+        width: 100% !important;
+        flex-basis: 22rem;
+        height: 100% !important;
+      }
+
+      .skeleton-video-author-details {
+        height: 100%;
+        position: relative;
+        margin: 0;
+
+        .skeleton.title,
+        .skeleton.meta-text,
+        .skeleton-channel-details .skeleton.text {
+          margin-left: 5.3rem;
+        }
+
+        .skeleton-channel-details {
+          .skeleton.avatar {
+            position: absolute;
+            @include set-block-image(4.5rem, 4.5rem);
+            top: 12%;
+          }
+
+          .skeleton.text {
+            margin: 0 0 0 5.3rem !important;
+          }
+        }
+
+        .skeleton-channel-details + .skeleton.text {
+          display: none;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 350px) {
+      .skeleton.thumbnail {
+        flex-basis: 16rem;
+      }
+    }
   }
   .skeleton.thumbnail {
     min-height: 100px !important;
@@ -180,10 +354,14 @@
       .skeleton.title {
         width: 120%;
       }
-      .skeleton-channel-details .skeleton.text {
-        display: block;
-        width: 60%;
-      }
+      // .skeleton-channel-details .skeleton.text {
+      //   margin: 0 0.3rem !important;
+      // }
+
+      // .skeleton.avatar {
+      //   display: block;
+      //   position: static;
+      // }
     }
   }
 }
