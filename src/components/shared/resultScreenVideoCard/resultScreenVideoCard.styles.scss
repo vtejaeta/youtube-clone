@@ -16,6 +16,7 @@
     .results-video-author-details {
       position: relative;
       margin-top: 0.8rem;
+      width: 30rem;
     }
 
     .channel-details {
@@ -26,8 +27,9 @@
 
     .video-title {
       font-size: 1.4rem;
-      margin-top: 1.2rem;
+      margin-top: 0.3rem;
       margin-left: 5.2rem;
+      font-weight: bold;
     }
 
     .description {
@@ -55,7 +57,15 @@
 
     .channel-details .channel-logo {
       @include set-block-image(3rem, 3rem);
-      top: 25%;
+      top: 17%;
+    }
+
+    .results-video-author-details {
+      width: 22rem;
+
+      & > * {
+        margin-left: 4.3rem;
+      }
     }
   }
 
