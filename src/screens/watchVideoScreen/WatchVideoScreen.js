@@ -11,12 +11,14 @@ import SuggestionVideosLayout from "../../components/layout/suggestionVideosLayo
 import useSuggestionVideosFromRedux from "../../hooks/useSuggestionVideosFromRedux";
 import SkeletonSearchVideoResults from "../../components/layout/skeletons/SkeletonSearchVideoResults";
 import useThemeStateFromRedux from "../../hooks/useThemeStateFromRedux";
+import useVideoDetails from "../../hooks/useVideoDetails";
 
 export default function WatchVideoScreen(props) {
   const dispatch = useDispatch();
   const term = getSearchParam(props.location, "v");
   const { loading } = useSuggestionVideosFromRedux();
   const { theme } = useThemeStateFromRedux();
+  const [videoData] = useVideoDetails(term);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -25,6 +27,8 @@ export default function WatchVideoScreen(props) {
 
     return () => dispatch(resetVideos());
   }, [dispatch, term]);
+
+  console.log({ videoData });
 
   return (
     <>
