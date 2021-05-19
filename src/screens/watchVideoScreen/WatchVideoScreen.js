@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import getSearchParam from "../../utils/searchParam.utils";
 import Header from "../../components/layout/header/Header";
 import "./watchVideoScreen.styles.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   resetVideos,
   searchSuggestedVideos,
@@ -18,17 +18,19 @@ export default function WatchVideoScreen(props) {
   const term = getSearchParam(props.location, "v");
   const { loading } = useSuggestionVideosFromRedux();
   const { theme } = useThemeStateFromRedux();
-  const [videoData] = useVideoDetails(term);
+  const videoDetails = useSelector((state) => state.getVideoDetails);
+  useVideoDetails(term);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+
     dispatch(resetVideos());
     dispatch(searchSuggestedVideos(term));
 
     return () => dispatch(resetVideos());
   }, [dispatch, term]);
 
-  console.log({ videoData });
+  console.log({ videoDetails });
 
   return (
     <>
