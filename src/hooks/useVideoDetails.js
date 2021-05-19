@@ -1,28 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getVideoDetails, resetVideos } from "../features/getVideoDetailsSlice";
 
-export default function useVideoDetails(videoId) {
-  const [state, setState] = useState({
-    status: "idle",
-    data: null,
-    error: null,
-  });
+export default function useVideosDetails(videoId) {
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!videoId) {
-      return;
-    }
-    setState({ status: "pending" });
-    fetch(
-      `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoId}&key=${process.env.REACT_APP_YOUTUBE_APIKEY}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setState({ data, status: "resolved" });
-      })
-      .catch((error) => {
-        setState({ error, status: "rejected" });
-      });
-  }, [videoId]);
+    dispatch(resetVideos());
+    dispatch(getVideoDetails(videoId));
 
-  return [state];
+    return () => dispatch(resetVideos());
+  }, [dispatch, videoId]);
 }
