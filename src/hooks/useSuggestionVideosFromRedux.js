@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-export default function useVideosStateFromRedux() {
+export default function useSuggestionVideosFromRedux() {
   const { loading, suggestionVideos, error } = useSelector(
     (state) => state.getSuggestionVideos
   );
