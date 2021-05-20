@@ -31,12 +31,12 @@ export const getVideoDetails = (videoId) => async (dispatch) => {
   try {
     const { data } = await youtube.get("videos", {
       params: {
-        part: "statistics",
+        part: "snippet,contentDetails,statistics",
         id: `${videoId}`,
         key: process.env.REACT_APP_YOUTUBE_APIKEY,
       },
     });
-    dispatch(setVideoDetails(data.items));
+    dispatch(setVideoDetails(data.items[0]));
   } catch (error) {
     dispatch(setError(error));
   } finally {
