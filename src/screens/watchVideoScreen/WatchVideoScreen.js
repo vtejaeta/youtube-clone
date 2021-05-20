@@ -18,7 +18,8 @@ export default function WatchVideoScreen(props) {
   const term = getSearchParam(props.location, "v");
   const { loading } = useSuggestionVideosFromRedux();
   const { theme } = useThemeStateFromRedux();
-  const videoDetails = useSelector((state) => state.getVideoDetails);
+  const { videoDetails } = useSelector((state) => state.getVideoDetails);
+
   useVideoDetails(term);
 
   useEffect(() => {
@@ -30,8 +31,6 @@ export default function WatchVideoScreen(props) {
     return () => dispatch(resetVideos());
   }, [dispatch, term]);
 
-  console.log({ videoDetails });
-
   return (
     <>
       <Header />
@@ -41,14 +40,32 @@ export default function WatchVideoScreen(props) {
         }
       >
         <div className="grid-cont">
-          <div className="main-video-player-cont">
-            <iframe
-              src={`https://www.youtube.com/embed/${term}`}
-              title="video player"
-              frameBorder="0"
-              allowFullScreen
-              className="main-video-player"
-            />
+          <div className="main-video-cont">
+            <div className="main-video-player-cont">
+              <iframe
+                src={`https://www.youtube.com/embed/${term}`}
+                title="video player"
+                frameBorder="0"
+                allowFullScreen
+                className="main-video-player"
+              />
+            </div>
+            {Boolean(Object.keys(videoDetails).length) && (
+              <>
+                <p className="main-video-title">{videoDetails.snippet.title}</p>
+                <p className="main-video-upload-date">
+                  {new Date(videoDetails.snippet.publishedAt).toDateString()}
+                </p>
+                <div className="main-video-channel-details">
+                  <p className="video-channel-name">
+                    {videoDetails.snippet.channelTitle}
+                  </p>
+                  <p className="video-description">
+                    {videoDetails.snippet.description}
+                  </p>
+                </div>
+              </>
+            )}
           </div>
           <div className="next-videos-cont">
             <button className="suggestion-text">Suggestion Videos</button>
