@@ -15,6 +15,7 @@
 .sign-in {
   width: 20rem;
   background-color: $dark-google-blue;
+  background-color: #3700b3;
   @include set-flex(row, space-between, center);
   color: $white;
   cursor: pointer;
