@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import getSearchParam from "../../utils/searchParam.utils";
 import Header from "../../components/layout/header/Header";
 import "./watchVideoScreen.styles.scss";
@@ -16,6 +16,7 @@ import useVideoDetails from "../../hooks/useVideoDetails";
 export default function WatchVideoScreen(props) {
   const dispatch = useDispatch();
   const term = getSearchParam(props.location, "v");
+  const descriptionRef = useRef(null);
   const { loading } = useSuggestionVideosFromRedux();
   const { theme } = useThemeStateFromRedux();
   const { videoDetails } = useSelector((state) => state.getVideoDetails);
@@ -30,6 +31,10 @@ export default function WatchVideoScreen(props) {
 
     return () => dispatch(resetVideos());
   }, [dispatch, term]);
+
+  function toggleDescription() {
+    descriptionRef.current.classList.toggle("complete");
+  }
 
   return (
     <>
@@ -60,9 +65,16 @@ export default function WatchVideoScreen(props) {
                   <p className="video-channel-name">
                     {videoDetails.snippet.channelTitle}
                   </p>
-                  <p className="video-description">
+                  <pre className="video-description" ref={descriptionRef}>
                     {videoDetails.snippet.description}
-                  </p>
+                  </pre>
+                  <button
+                    className="show-more-btn"
+                    onClick={toggleDescription}
+                    data-hover="SHOW LESS"
+                  >
+                    <span>SHOW MORE</span>
+                  </button>
                 </div>
               </>
             )}
