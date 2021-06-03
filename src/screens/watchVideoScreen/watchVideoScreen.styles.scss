@@ -44,6 +44,10 @@
     margin: 2rem 0 0;
     font-weight: 500;
     font-size: 1.8rem;
+
+    @include set-small-screen {
+      font-size: 1.6rem;
+    }
   }
 
   .main-video-channel-details {
@@ -66,6 +70,11 @@
     background: #ffc8ba;
     color: #cc0000;
     font-weight: 550;
+
+    @include set-small-screen {
+      font-size: 1.4rem;
+      padding: 0.5rem 1rem;
+    }
   }
 
   .video-description {
@@ -77,6 +86,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 0.5rem;
+    white-space: pre-wrap;
+
+    @include set-small-screen {
+      font-size: 1.3rem;
+    }
   }
 
   .video-description.complete {
@@ -312,7 +326,7 @@
   }
 
   .next-videos-cont {
-    padding: 0rem 3rem 3rem;
+    padding: 0rem 1.5rem;
   }
 
   .main-video-cont {
@@ -324,11 +338,22 @@
 
     .main-video-title,
     .main-video-upload-date {
-      padding: 0rem 3rem;
+      padding: 0rem 2rem;
+    }
+
+    .main-video-title {
+      margin: 1rem 0 0;
+    }
+
+    .main-video-upload-date {
+      margin: 0.2rem 0 0;
     }
 
     .main-video-channel-details {
-      margin: 0 3rem;
+      margin: 0 2rem;
+    }
+    .video-channel-name {
+      margin-bottom: 1rem;
     }
   }
 }
