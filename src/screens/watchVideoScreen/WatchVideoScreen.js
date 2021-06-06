@@ -12,6 +12,7 @@ import useSuggestionVideosFromRedux from "../../hooks/useSuggestionVideosFromRed
 import SkeletonSearchVideoResults from "../../components/layout/skeletons/SkeletonSearchVideoResults";
 import useThemeStateFromRedux from "../../hooks/useThemeStateFromRedux";
 import useVideoDetails from "../../hooks/useVideoDetails";
+import SkeletonElement from "../../components/layout/skeletons/SkeletonElement";
 
 export default function WatchVideoScreen(props) {
   const dispatch = useDispatch();
@@ -46,17 +47,17 @@ export default function WatchVideoScreen(props) {
       >
         <div className="grid-cont">
           <div className="main-video-cont">
-            <div className="main-video-player-cont">
-              <iframe
-                src={`https://www.youtube.com/embed/${term}`}
-                title="video player"
-                frameBorder="0"
-                allowFullScreen
-                className="main-video-player"
-              />
-            </div>
-            {Boolean(Object.keys(videoDetails).length) && (
+            {Boolean(Object.keys(videoDetails).length) ? (
               <>
+                <div className="main-video-player-cont">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${term}`}
+                    title="video player"
+                    frameBorder="0"
+                    allowFullScreen
+                    className="main-video-player"
+                  />
+                </div>
                 <p className="main-video-title">{videoDetails.snippet.title}</p>
                 <p className="main-video-upload-date">
                   {new Date(videoDetails.snippet.publishedAt).toDateString()}
@@ -77,6 +78,17 @@ export default function WatchVideoScreen(props) {
                   </button>
                 </div>
               </>
+            ) : (
+              <div className="video-screen-skeleton">
+                <SkeletonElement type="thumbnail" />
+                <SkeletonElement type="meta-text" />
+                <SkeletonElement type="meta-text" />
+                <div className="video-screen-details-skeleton">
+                  <SkeletonElement type="text" />
+                  <SkeletonElement type="text" />
+                  <SkeletonElement type="text" />
+                </div>
+              </div>
             )}
           </div>
           <div className="next-videos-cont">
