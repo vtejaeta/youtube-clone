@@ -132,6 +132,7 @@
   right: 0;
   width: 100%;
   height: 100%;
+  background: $thumbnail-bg;
 }
 
 .next-videos-cont {
@@ -505,9 +506,44 @@
   }
 }
 
+.video-screen-skeleton {
+  .skeleton.thumbnail {
+    min-height: 31rem;
+    & + .skeleton.meta-text {
+      margin-top: 2rem;
+      margin-bottom: 1.3rem;
+      width: 30%;
+      height: 1.2rem;
+    }
+  }
+
+  .video-screen-details-skeleton {
+    margin-top: 1.5rem;
+
+    .skeleton.text {
+      margin: 0.5rem 0;
+    }
+  }
+
+  @include set-medium-screen {
+    .skeleton.thumbnail {
+      min-height: 25rem;
+    }
+  }
+
+  @media only screen and (max-width: 450px) {
+    padding: 0 1.5rem;
+
+    .skeleton.thumbnail {
+      min-height: 20rem;
+    }
+  }
+}
+
 // === DARK MODE ===
 .whole-video-wrapper.dark {
   background: $dark-video-grid-bg;
+
   .suggestion-text {
     background: $dark-header-bg;
     color: $light-suggestion-text;
@@ -540,5 +576,13 @@
   .main-video-channel-details {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .skeleton {
+    background: $dark-skeleton-bg;
+  }
+
+  .main-video-player {
+    background: $dark-thumbnail-bg;
   }
 }
