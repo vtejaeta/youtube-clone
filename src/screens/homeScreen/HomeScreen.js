@@ -12,7 +12,7 @@ export default function HomeScreen() {
   const { theme: UITheme } = useThemeStateFromRedux();
   const { loading } = useVideosStateFromRedux();
 
-  useVideos("ReactJS");
+  useVideos("JavaScript crash course");
 
   return (
     <div
