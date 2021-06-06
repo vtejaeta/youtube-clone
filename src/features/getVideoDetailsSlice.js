@@ -27,6 +27,7 @@ const getVideoDetailsSlice = createSlice({
 });
 
 export const getVideoDetails = (videoId) => async (dispatch) => {
+  dispatch(resetVideos());
   dispatch(setLoading(true));
   try {
     const { data } = await youtube.get("videos", {
