@@ -10,9 +10,18 @@ import useThemeStateFromRedux from "../../hooks/useThemeStateFromRedux";
 
 export default function HomeScreen() {
   const { theme: UITheme } = useThemeStateFromRedux();
-  const { loading } = useVideosStateFromRedux();
+  const { loading, error } = useVideosStateFromRedux();
 
   useVideos("JavaScript crash course");
+
+  // if (error) {
+  //   return (
+  //     <>
+  //       <p>Error Message: </p>
+  //       <pre>{error}</pre>
+  //     </>
+  //   );
+  // }
 
   return (
     <div
