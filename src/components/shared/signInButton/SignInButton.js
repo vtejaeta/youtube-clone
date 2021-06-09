@@ -1,24 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./signInButton.styles.scss";
 import GoogleSVG from "../../../assets/google-icon.svg";
-import { navigate } from "@reach/router";
-import { authenticateUser } from "../../../features/userSlice";
-import { useDispatch, useSelector } from "react-redux";
 
-export default function SignInButton() {
-  const dispatch = useDispatch();
-  const { userEmail } = useSelector((state) => state.user);
-
-  useEffect(() => {
-    userEmail && navigate("/home");
-  }, [userEmail]);
-
-  function logUserIn() {
-    dispatch(authenticateUser());
-  }
-
+export default function SignInButton({ logUserIn }) {
   return (
-    <div className="sign-in btn" onClick={logUserIn}>
+    <div className="sign-in btn" onClick={() => logUserIn(false)}>
       <div className="google-logo-cont">
         <img src={GoogleSVG} alt="Google logo" className="google-svg" />
       </div>
