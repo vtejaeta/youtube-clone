@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import VideoThumbnail from "../videoThumbnail/VideoThumbnail";
 import ResultScreenVideoDetails from "../resultScreenVideoDetails/ResultScreenVideoDetails";
 import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
