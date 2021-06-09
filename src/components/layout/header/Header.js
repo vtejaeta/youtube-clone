@@ -3,7 +3,6 @@ import { Link, navigate } from "@reach/router";
 import youtubeLight from "../../../assets/youtube-light.png";
 import searchIcon from "../../../assets/search-icon.svg";
 import backArrowBlack from "../../../assets/arrow_back_black.svg";
-import backArrowWhite from "../../../assets/arrow_back_white.svg";
 import { useDispatch } from "react-redux";
 import "./header.styles.scss";
 import { setToggleTheme } from "../../../features/themeSlice";
@@ -100,31 +99,32 @@ export default function Header() {
       >
         <img src={searchIcon} alt="search button" className="search-btn-icon" />
       </button>
-      <p className="welcome-text">
-        Hello <strong>{userName.toUpperCase()}</strong>
-      </p>
-      <label className="switch">
-        <input
-          type="checkbox"
-          className="theme-input"
-          checked={theme === "light" ? false : true}
-          // onClick={() => toggleTheme()}
-          onChange={() => toggleTheme()}
-        />
-        <span className="slider round"></span>
-      </label>
-      <div className="menu-items dropdown">
-        <img src={userPhoto} alt="User info" />
-        <div className="dropdown-content">
-          <button
-            className="sign-out-btn"
-            onClick={(e) => {
-              dispatch(logUserOut());
-              navigate("/");
-            }}
-          >
-            Sign out
-          </button>
+      <div className="menu-items-cont">
+        <p className="welcome-text">
+          Hello <strong>{userName?.toUpperCase()}</strong>
+        </p>
+        <label className="switch">
+          <input
+            type="checkbox"
+            className="theme-input"
+            checked={theme === "light" ? false : true}
+            onChange={() => toggleTheme()}
+          />
+          <span className="slider round"></span>
+        </label>
+        <div className="menu-items dropdown">
+          <img src={userPhoto} alt="User info" />
+          <div className="dropdown-content">
+            <button
+              className="sign-out-btn"
+              onClick={(e) => {
+                dispatch(logUserOut());
+                navigate("/");
+              }}
+            >
+              Sign out
+            </button>
+          </div>
         </div>
       </div>
     </header>
