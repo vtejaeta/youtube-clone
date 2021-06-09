@@ -20,13 +20,15 @@
     background: none;
     border: none;
     outline: none;
-    margin-right: 2rem;
+    margin-right: 1rem;
+    flex: 0 0 10%;
   }
 
   .search-box-form {
     display: flex;
     margin: 0;
-    max-width: 50rem;
+    // max-width: 50rem;
+    flex: 0 0 87%;
   }
 }
 
@@ -98,6 +100,17 @@ header {
       }
     }
   }
+
+  .menu-items-cont {
+    width: 28rem;
+    @include set-flex(row, space-between, center);
+
+    @media only screen and (max-width: 1080px) {
+      width: 13rem;
+      @include set-flex(row, space-evenly);
+    }
+  }
+
   .dummy.search-btn {
     display: none;
   }
