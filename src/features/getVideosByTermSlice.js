@@ -46,17 +46,6 @@ export const searchVideosByTerm = (searchTerm) => async (dispatch) => {
   }
 };
 
-// export async function getVideoViewsCount(videoId) {
-//   const { data } = await youtube.get("/videos", {
-//     params: {
-//       part: "statistics",
-//       id: videoId,
-//       key: process.env.REACT_APP_YOUTUBE_APIKEY,
-//     },
-//   });
-//   return data;
-// }
-
 export const {
   setLoading,
   setVideosByTerm,
