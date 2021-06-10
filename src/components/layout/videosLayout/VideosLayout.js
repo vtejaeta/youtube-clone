@@ -4,7 +4,11 @@ import useVideosStateFromRedux from "../../../hooks/useVideosStateFromRedux";
 import Empty_Pana from "../../../assets/Empty-pana.svg";
 
 export default function VideosLayout({ Component }) {
-  const { videosByTerm } = useVideosStateFromRedux();
+  const { videosByTerm, error } = useVideosStateFromRedux();
+
+  if (error) {
+    throw error;
+  }
 
   function renderVideos() {
     if (videosByTerm.length === 0) {

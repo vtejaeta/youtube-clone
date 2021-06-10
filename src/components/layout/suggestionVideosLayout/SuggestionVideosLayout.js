@@ -5,7 +5,9 @@ import Empty_Pana from "../../../assets/Empty-pana.svg";
 import ResultScreenVideoCard from "../../shared/resultScreenVideoCard/ResultScreenVideoCard";
 
 export default function SuggestionVideosLayout() {
-  const { suggestionVideos } = useSuggestionVideosFromRedux();
+  const { suggestionVideos, error } = useSuggestionVideosFromRedux();
+
+  if (error) throw error;
 
   function renderVideos() {
     if (suggestionVideos.length === 0) {
