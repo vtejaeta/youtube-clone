@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import youtube from "d:/videos_hooks/src/apis/youtube";
+import youtube from "../apis/youtube";
 
 const initialState = {
   loading: false,
