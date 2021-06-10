@@ -1,0 +1,67 @@
+@import "../styles/main.scss";
+
+.error-compo {
+  background: $videos-grid-bg;
+  min-height: 100vh;
+}
+
+.error-msg-cont {
+  padding: 3rem;
+  text-align: center;
+  padding-top: 12rem;
+  @include set-flex(column, center);
+  font-size: 1.2rem;
+  a {
+    color: $youtube-red;
+  }
+  max-width: 50rem;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 475px) {
+    padding-top: 15rem;
+  }
+}
+
+.error-info-text {
+  font-size: 1.6rem;
+  margin-top: 1.2rem;
+  font-weight: bold;
+}
+
+.error-info-text.span {
+  margin: 0;
+}
+
+.sorry-illustrator {
+  @include set-block-image(30rem, 30rem);
+
+  @include set-very-small-screen {
+    @include set-block-image(22rem, 22rem);
+  }
+}
+
+.error-code-box {
+  margin-top: 2.2rem;
+  background: $thumbnail-bg;
+  background: #011627;
+  padding: 1rem 1.6rem;
+  font-weight: bold;
+  color: $white;
+  align-self: center;
+  justify-self: center;
+}
+
+//  === DARK MODE ===
+.error-compo.dark {
+  background: $dark-video-grid-bg;
+  color: $white;
+
+  .sorry-illustrator {
+    content: url("../assets/Feeling\ sorry-pana-light.svg");
+  }
+
+  .error-code-box {
+    background: $white;
+    color: #011627;
+  }
+}
