@@ -13,6 +13,8 @@ import SkeletonSearchVideoResults from "../../components/layout/skeletons/Skelet
 import useThemeStateFromRedux from "../../hooks/useThemeStateFromRedux";
 import useVideoDetails from "../../hooks/useVideoDetails";
 import SkeletonElement from "../../components/layout/skeletons/SkeletonElement";
+import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
+import ErrorFallback from "../../errorBoundary/ErrorFallback";
 
 export default function WatchVideoScreen(props) {
   const dispatch = useDispatch();
@@ -47,7 +49,7 @@ export default function WatchVideoScreen(props) {
       >
         <div className="grid-cont">
           <div className="main-video-cont">
-            {Boolean(Object.keys(videoDetails).length) ? (
+            {videoDetails && Boolean(Object.keys(videoDetails).length) ? (
               <>
                 <div className="main-video-player-cont">
                   <iframe
@@ -96,7 +98,9 @@ export default function WatchVideoScreen(props) {
             {loading ? (
               <SkeletonSearchVideoResults />
             ) : (
-              <SuggestionVideosLayout />
+              <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <SuggestionVideosLayout />
+              </ErrorBoundary>
             )}
           </div>
         </div>

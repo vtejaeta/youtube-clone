@@ -7,21 +7,13 @@ import HomeScreenVideoCard from "../../components/shared/homeScreenVideoCard/Hom
 import "./homeScreen.styles.scss";
 import useVideosStateFromRedux from "../../hooks/useVideosStateFromRedux";
 import useThemeStateFromRedux from "../../hooks/useThemeStateFromRedux";
+import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
+import ErrorFallback from "../../errorBoundary/ErrorFallback";
 
 export default function HomeScreen() {
   const { theme: UITheme } = useThemeStateFromRedux();
-  const { loading, error } = useVideosStateFromRedux();
-
+  const { loading } = useVideosStateFromRedux();
   useVideos("JavaScript crash course");
-
-  // if (error) {
-  //   return (
-  //     <>
-  //       <p>Error Message: </p>
-  //       <pre>{error}</pre>
-  //     </>
-  //   );
-  // }
 
   return (
     <div
@@ -34,11 +26,21 @@ export default function HomeScreen() {
         {loading ? (
           <SkeletonVideoGrid />
         ) : (
-          <div className="video-section-cont">
-            <VideosLayout Component={HomeScreenVideoCard} />
-          </div>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <div className="video-section-cont">
+              <VideosLayout Component={HomeScreenVideoCard} />
+            </div>
+          </ErrorBoundary>
         )}
       </div>
     </div>
   );
 }
+
+// export default function HomeScreenWithErrorBoundary(props) {
+//   return (
+//     <ErrorBoundary FallbackComponent={ErrorFallback}>
+//       <HomeScreen {...props} />
+//     </ErrorBoundary>
+//   );
+// }
