@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import getSearchParam from "../../utils/searchParam.utils";
-import Header from "../../components/layout/header/Header";
 import "./watchVideoScreen.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -41,7 +40,6 @@ export default function WatchVideoScreen(props) {
 
   return (
     <>
-      <Header />
       <div
         className={
           theme === "dark" ? "whole-video-wrapper dark" : "whole-video-wrapper"
@@ -98,7 +96,7 @@ export default function WatchVideoScreen(props) {
             {loading ? (
               <SkeletonSearchVideoResults />
             ) : (
-              <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <ErrorBoundary FallbackComponent={ErrorFallback} key={term}>
                 <SuggestionVideosLayout />
               </ErrorBoundary>
             )}

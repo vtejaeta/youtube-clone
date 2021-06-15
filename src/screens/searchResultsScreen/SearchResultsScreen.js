@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../../components/layout/header/Header";
 import VideosLayout from "../../components/layout/videosLayout/VideosLayout";
 import ResultScreenVideoCard from "../../components/shared/resultScreenVideoCard/ResultScreenVideoCard";
 import useVideos from "../../hooks/useVideos";
@@ -27,7 +26,6 @@ export default function SearchResultsScreen(props) {
       }
     >
       <div className="whole-videos-cont">
-        <Header />
         {loading ? (
           <SkeletonSearchVideoResults />
         ) : (
