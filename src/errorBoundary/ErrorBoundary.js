@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "@reach/router";
 
 export default class ErrorBoundary extends Component {
   state = { hasError: false, error: null };
