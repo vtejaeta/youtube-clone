@@ -1,6 +1,5 @@
 import { Link } from "@reach/router";
 import React from "react";
-import Header from "../components/layout/header/Header";
 import useThemeStateFromRedux from "../hooks/useThemeStateFromRedux";
 import "./ErrorFallback.styles.scss";
 import FeelingSorryPana from "../assets/Feeling sorry-pana.svg";
