@@ -6,9 +6,9 @@ import SearchResultsScreen from "./screens/searchResultsScreen/SearchResultsScre
 import useUserStateFromRedux from "./hooks/useUserStateFromRedux";
 import WatchVideoScreen from "./screens/watchVideoScreen/WatchVideoScreen";
 import PageNotFoundScreen from "./screens/pageNotFoundScreen/PageNotFoundScreen";
+import Header from "./components/layout/header/Header";
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const { userEmail } = useUserStateFromRedux();
+const ProtectedRoute = ({ component: Component, userEmail, ...rest }) => {
   return userEmail ? (
     <Component {...rest} />
   ) : (
@@ -16,8 +16,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-const DefaultRoute = ({ component: Component, ...rest }) => {
-  const { userEmail } = useUserStateFromRedux();
+const DefaultRoute = ({ component: Component, userEmail, ...rest }) => {
   return userEmail ? (
     <Redirect from="" to="/home" noThrow />
   ) : (
@@ -26,14 +25,30 @@ const DefaultRoute = ({ component: Component, ...rest }) => {
 };
 
 function App() {
+  const { userEmail } = useUserStateFromRedux();
   return (
-    <Router>
-      <DefaultRoute component={SignInScreen} path="/" />
-      <ProtectedRoute component={HomeScreen} path="/home" />
-      <ProtectedRoute component={SearchResultsScreen} path="/results" />
-      <ProtectedRoute component={WatchVideoScreen} path="/watch" />
-      <DefaultRoute default component={PageNotFoundScreen} />
-    </Router>
+    <>
+      {userEmail && <Header />}
+      <Router>
+        <DefaultRoute component={SignInScreen} userEmail={userEmail} path="/" />
+        <ProtectedRoute
+          component={HomeScreen}
+          userEmail={userEmail}
+          path="/home"
+        />
+        <ProtectedRoute
+          component={SearchResultsScreen}
+          userEmail={userEmail}
+          path="/results"
+        />
+        <ProtectedRoute
+          component={WatchVideoScreen}
+          userEmail={userEmail}
+          path="/watch"
+        />
+        <DefaultRoute default component={PageNotFoundScreen} />
+      </Router>
+    </>
   );
 }
 
