@@ -5,7 +5,7 @@ export default function ThemeToggleSwitch({ theme, toggleTheme }) {
   return (
     <input
       type="checkbox"
-      class="toggle"
+      className="toggle"
       checked={theme === "light" ? false : true}
       onChange={toggleTheme}
     ></input>

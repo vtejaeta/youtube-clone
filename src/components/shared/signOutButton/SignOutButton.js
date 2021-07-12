@@ -1,5 +1,6 @@
-import { navigate } from "@reach/router";
 import React from "react";
+import { navigate } from "@reach/router";
+
 import { logUserOut } from "../../../features/userSlice";
 import useUserStateFromRedux from "../../../hooks/useUserStateFromRedux";
 

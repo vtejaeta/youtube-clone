@@ -1,6 +1,8 @@
 import React from "react";
-import "./signInButton.styles.scss";
+
 import GoogleSVG from "../../../assets/google-icon.svg";
+
+import "./signInButton.styles.scss";
 
 export default function SignInButton({ logUserIn }) {
   return (

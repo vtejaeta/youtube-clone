@@ -2,19 +2,18 @@
 
 .google-svg {
   @include set-block-image(2.4rem, 2.4rem);
-  background: $white;
+  background: white;
 }
 
 .google-logo-cont {
   padding: 0.8rem;
-  background: $white;
+  background: white;
   margin: 0.1rem;
   border-radius: 1px;
 }
 
 .sign-in {
   width: 20rem;
-  background-color: $dark-google-blue;
   background-color: #3700b3;
   @include set-flex(row, space-between, center);
   color: $white;
@@ -22,7 +21,7 @@
   border: 1px solid transparent;
 
   &:hover {
-    box-shadow: rgba($dark-google-blue, 0.3) 0px 0px 3px 3px;
+    box-shadow: rgba(#006bbb, 0.3) 0px 0px 3px 3px;
   }
 }
 

@@ -1,6 +1,6 @@
 import { Link } from "@reach/router";
 import React from "react";
-import youtubeLight from "../../../assets/youtube-light.png";
+import youtubeLight from "../../../assets/youtube-light.svg";
 
 export default function YoutubeLogo() {
   return (

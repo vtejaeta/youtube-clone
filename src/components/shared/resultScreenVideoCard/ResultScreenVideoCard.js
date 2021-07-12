@@ -6,7 +6,7 @@ import "./resultScreenVideoCard.styles.scss";
 
 export default function ResultScreenVideoCard({
   timeFromNow,
-  thumbnailURL,
+  defaultThumbnail,
   title,
   channelTitle,
   videoId,
@@ -15,7 +15,7 @@ export default function ResultScreenVideoCard({
   const { theme: UITheme } = useThemeStateFromRedux();
 
   return (
-    <div
+    <section
       className={
         UITheme === "dark"
           ? " result-video-container dark"
@@ -23,7 +23,7 @@ export default function ResultScreenVideoCard({
       }
     >
       <VideoThumbnail
-        thumbnailURL={thumbnailURL}
+        defaultThumbnail={defaultThumbnail}
         videoId={videoId}
         title={title}
       />
@@ -34,6 +34,6 @@ export default function ResultScreenVideoCard({
         videoId={videoId}
         description={description}
       />
-    </div>
+    </section>
   );
 }

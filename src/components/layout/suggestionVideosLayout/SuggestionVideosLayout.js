@@ -32,7 +32,7 @@ export default function SuggestionVideosLayout() {
           <ResultScreenVideoCard
             key={id.videoId}
             timeFromNow={timeFromNow}
-            thumbnailURL={snippet.thumbnails.medium.url}
+            defaultThumbnail={snippet.thumbnails.medium.url}
             videoId={id.videoId}
             title={snippet.title}
             description={snippet.description}
