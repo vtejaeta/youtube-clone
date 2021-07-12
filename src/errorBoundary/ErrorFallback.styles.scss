@@ -8,7 +8,7 @@
 .error-msg-cont {
   padding: 3rem;
   text-align: center;
-  padding-top: 9rem;
+  padding-top: 15rem;
   @include set-flex(column, center);
   font-size: 1.2rem;
   a {
@@ -33,7 +33,7 @@
 }
 
 .sorry-illustrator {
-  @include set-block-image(30rem, 30rem);
+  @include set-block-image(20rem, 20rem);
 
   @include set-very-small-screen {
     @include set-block-image(22rem, 22rem);
@@ -41,6 +41,7 @@
 }
 
 .error-code-box {
+  display: inline-block;
   margin-top: 2.2rem;
   background: $thumbnail-bg;
   background: #011627;
@@ -49,6 +50,14 @@
   color: $white;
   align-self: center;
   justify-self: center;
+  width: 20rem;
+  cursor: move;
+  overflow-x: scoll;
+  overflow-y: hidden;
+}
+
+.error-code-box::-webkit-scrollbar {
+  display: none;
 }
 
 //  === DARK MODE ===
