@@ -32,6 +32,8 @@
 
   hr {
     width: 100%;
+    border: none;
+    border-top: 1px solid #c9cbeb;
   }
 
   .guest-login-btn {
@@ -46,7 +48,7 @@
     border-radius: 0.4rem;
 
     &:hover {
-      color: $white;
+      color: white;
       background: #302281;
     }
   }
@@ -69,9 +71,5 @@
   @include set-very-small-screen {
     width: 29rem;
     min-height: 45rem;
-
-    .hero-logo {
-      @include set-block-image(3rem, 15rem);
-    }
   }
 }

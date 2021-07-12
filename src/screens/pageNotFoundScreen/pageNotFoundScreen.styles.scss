@@ -1,22 +1,53 @@
 @import "../../styles/main.scss";
 
-.pageNotFound-illustartor {
-  @include set-block-image(32rem, 40rem);
-}
-
 .pageNotFound-cont {
   height: 100vh;
   background: $videos-grid-bg;
   @include set-flex;
   flex-direction: column;
+
+  .pageNotFound-illustartor {
+    @include set-block-image(28rem, 30rem);
+    margin-bottom: -4rem;
+
+    @media only screen and (max-width: 500px) {
+      @include set-block-image(25rem, 25rem);
+    }
+  }
+
+  .home-link {
+    padding: 1rem 1.6rem;
+    background: $youtube-red;
+    background: $black;
+    color: white;
+    border: none;
+    border-radius: 2.4rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+  }
+
+  .error-desc {
+    font-size: 2.4rem;
+    text-align: center;
+  }
+  .page-description {
+    margin: 1rem 0 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.4rem;
+  }
 }
 
-.home-link {
-  padding: 1rem 1.6rem;
-  background: $youtube-red;
-  background: $black;
-  color: white;
-  border: none;
-  border-radius: 2.4rem;
-  cursor: pointer;
+.pageNotFound-cont.dark {
+  background: $dark-video-grid-bg;
+
+  .home-link {
+    background: $white;
+    color: black;
+  }
+
+  .error-desc,
+  .page-description {
+    color: white;
+  }
 }

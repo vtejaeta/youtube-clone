@@ -1,9 +1,13 @@
 import React from "react";
-import YoutubeDark from "../../assets/youtube-dark.png";
-import SignInButton from "../../components/shared/signInButton/SignInButton";
-import "./signInScreen.styles.scss";
 import { useDispatch } from "react-redux";
+
+import YoutubeDark from "../../assets/youtube-dark.svg";
+import userPhoto from "../../assets/dummy-user.svg";
+
+import SignInButton from "../../components/shared/signInButton/SignInButton";
 import { setActiveUser, authenticateUser } from "../../features/userSlice";
+
+import "./signInScreen.styles.scss";
 
 export default function SignInScreen() {
   const dispatch = useDispatch();
@@ -14,8 +18,7 @@ export default function SignInScreen() {
           setActiveUser({
             userName: "Guest",
             userEmail: "guest.myapp@gmail.com",
-            userPhoto:
-              "https://img.icons8.com/cotton/2x/gender-neutral-user--v2.png",
+            userPhoto: userPhoto,
           })
         )
       : dispatch(authenticateUser());
@@ -31,7 +34,7 @@ export default function SignInScreen() {
             className="hero-logo"
           />
         </div>
-        <p>Please use below Sign-In to proceed further.</p>
+        <p>Please use below sign in to proceed further</p>
         <hr />
         <SignInButton logUserIn={logUserIn} />
         <button className="guest-login-btn" onClick={() => logUserIn(true)}>

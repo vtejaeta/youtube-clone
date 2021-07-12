@@ -1,13 +1,17 @@
 import React from "react";
-import VideosLayout from "../../components/layout/videosLayout/VideosLayout";
+
 import useVideos from "../../hooks/useVideos";
-import SkeletonVideoGrid from "../../components/layout/skeletons/SkeletonVideoGrid";
-import HomeScreenVideoCard from "../../components/shared/homeScreenVideoCard/HomeScreenVideoCard";
-import "./homeScreen.styles.scss";
 import useVideosStateFromRedux from "../../hooks/useVideosStateFromRedux";
 import useThemeStateFromRedux from "../../hooks/useThemeStateFromRedux";
+
+import VideosLayout from "../../components/layout/videosLayout/VideosLayout";
+import SkeletonVideoGrid from "../../components/layout/skeletons/SkeletonVideoGrid";
+import HomeScreenVideoCard from "../../components/shared/homeScreenVideoCard/HomeScreenVideoCard";
+
 import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
 import ErrorFallback from "../../errorBoundary/ErrorFallback";
+
+import "./homeScreen.styles.scss";
 
 export default function HomeScreen() {
   const { theme: UITheme } = useThemeStateFromRedux();
@@ -16,7 +20,7 @@ export default function HomeScreen() {
   useVideos("JavaScript crash course");
 
   return (
-    <div
+    <main
       className={
         UITheme === "dark" ? "home-screen-cont dark" : "home-screen-cont"
       }
@@ -32,6 +36,6 @@ export default function HomeScreen() {
           </ErrorBoundary>
         )}
       </div>
-    </div>
+    </main>
   );
 }
