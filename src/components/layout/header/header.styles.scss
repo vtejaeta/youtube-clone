@@ -1,7 +1,7 @@
 @import "./../../../styles/main.scss";
 
 .main-logo-cont {
-  @include set-block-image(2.5rem, 10rem);
+  @include set-block-image(4rem, 13rem);
   .header-logo {
     @include set-block-image;
   }
@@ -27,7 +27,6 @@
   .search-box-form {
     display: flex;
     margin: 0;
-    // max-width: 50rem;
     flex: 0 0 87%;
   }
 }
@@ -53,13 +52,12 @@
 }
 
 header {
-  border-bottom: 1px solid rgba($color: $black, $alpha: 0.1);
-  padding: 1rem 4rem;
+  border-bottom: 1px solid rgba($color: black, $alpha: 0.1);
+  padding: 1rem 4rem 1rem 2.5rem;
   position: fixed;
-  // top: 0;
   width: 100%;
   z-index: 10000;
-  background: $white;
+  background-color: rgba($color: white, $alpha: 0.99);
   @include set-flex(row, space-between, center);
 
   .back-arrow {
@@ -76,7 +74,7 @@ header {
       width: 100%;
       font-size: inherit;
       padding: 0px 1rem;
-      border: 1px solid rgba($color: $black, $alpha: 0.2);
+      border: 1px solid rgba($color: black, $alpha: 0.2);
       outline: none;
       height: 3rem;
       border-right: none;
@@ -109,6 +107,10 @@ header {
       width: 13rem;
       @include set-flex(row, space-evenly);
     }
+
+    @media only screen and (max-width: 350px) {
+      margin: 0;
+    }
   }
 
   .dummy.search-btn {
@@ -119,7 +121,6 @@ header {
     cursor: pointer;
     box-shadow: none;
     border: none;
-    // border-bottom: 1px solid $dark-channel-text;
     z-index: 0;
   }
   .menu-items {
@@ -127,8 +128,8 @@ header {
       display: none;
       position: absolute;
       background-color: $white;
-      min-width: 2rem;
-      right: 1.5%;
+      min-width: 7rem;
+      right: 4.5%;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
       z-index: 0;
     }
@@ -145,20 +146,26 @@ header {
     }
 
     img {
-      @include set-block-image(4rem, 4rem);
+      @include set-block-image(3rem, 3rem);
       border-radius: 50%;
+      background: $white;
     }
   }
   .welcome-text {
     color: $dark-gray;
+    max-width: 10rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 header.dark {
-  background: $dark-header-bg;
+  background-color: rgba(32, 32, 32, 0.99);
+  border-bottom: 1px solid rgba($color: white, $alpha: 0.1);
 
   .header-logo {
-    content: url("../../../assets/youtube-dark.png");
+    content: url("../../../assets/youtube-dark.svg");
   }
 
   .search-input {
@@ -169,17 +176,10 @@ header.dark {
 
   .search-btn {
     background: $dark-search-btn-bg;
-    // @include set-small-screen {
-    //   padding: 5px;
-    //   border: 1px solid $white;
-    //   border-radius: 50%;
-    // }
+
     .search-btn-icon {
       content: url("../../../assets/search_icon_white.svg");
       color: rgba($color: $white, $alpha: 0.88);
-      // @include set-small-screen {
-      //   @include set-block-image(4rem, 4rem);
-      // }
     }
   }
   .dummy.search-btn {
@@ -207,66 +207,11 @@ header.dark {
     border: 1px solid $dark-header-bg;
     border-bottom: 1px solid $dark-channel-text;
   }
+
+  .menu-items img {
+    color: $white;
+  }
 }
-
-// .switch {
-//   position: relative;
-//   display: inline-block;
-//   width: 42px;
-//   height: 25px;
-// }
-
-// .switch input {
-//   display: none;
-// }
-
-// .slider {
-//   position: absolute;
-//   cursor: pointer;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   background-color: #ccc;
-//   -webkit-transition: 0.4s;
-//   transition: 0.4s;
-// }
-
-// .slider:before {
-//   position: absolute;
-//   content: "";
-//   height: 20px;
-//   width: 20px;
-//   left: 3px;
-//   bottom: 2px;
-//   background-color: white;
-//   -webkit-transition: 0.4s;
-//   transition: 0.4s;
-// }
-
-// .theme-input:checked + .slider {
-//   background-color: #384249;
-//   border: 1px solid #179dfc;
-// }
-
-// .theme-input:focus + .slider {
-//   box-shadow: 0 0 1px #2196f3;
-// }
-
-// .theme-input:checked + .slider:before {
-//   -webkit-transform: translateX(16px);
-//   -ms-transform: translateX(16px);
-//   transform: translateX(16px);
-// }
-
-// /* Rounded sliders */
-// .slider.round {
-//   border-radius: 34px;
-// }
-
-// .slider.round:before {
-//   border-radius: 50%;
-// }
 
 @include set-large-screen {
   .welcome-text {
@@ -285,16 +230,6 @@ header.dark {
   header .search-box-form,
   header.dark .search-box-form {
     display: none;
-    // .search-btn {
-    //   margin-left: auto;
-    //   background: none;
-    //   padding: 5px;
-    //   border-radius: 50%;
-
-    //   .search-btn-icon {
-    //     @include set-block-image(2rem, 2rem);
-    //   }
-    // }
   }
   header .dummy.search-btn {
     display: block;
@@ -313,20 +248,26 @@ header.dark {
 @media only screen and (max-width: 520px) {
   header,
   header.dark {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 0.3rem;
+  }
+
+  .active-search .search-box-form {
+    padding-right: 2rem;
   }
 }
 
-@media only screen and (max-width: 420px) {
-  header .header-logo,
-  header.dark .header-logo {
-    @include set-block-image(2.2rem, 9rem);
-  }
-}
 @media only screen and (max-width: 300px) {
+  header .main-logo-cont {
+    @include set-block-image(4rem, 4rem);
+  }
   header .main-logo-cont .header-logo,
   header.dark .header-logo {
-    content: url("./../../../assets/youtube_social_icon_red.png");
-    @include set-block-image(2.2rem, 4rem);
+    content: url("./../../../assets/youtube_social_icon_red.svg");
+    @include set-block-image(4rem, 4rem);
+    margin-left: 1.3rem;
+  }
+
+  header .dummy.search-btn {
+    margin-left: 9rem;
   }
 }
