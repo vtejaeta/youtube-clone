@@ -16,7 +16,7 @@
   width: 20rem;
   background-color: #3700b3;
   @include set-flex(row, space-between, center);
-  color: $white;
+  color: var(--white);
   cursor: pointer;
   border: 1px solid transparent;
 
