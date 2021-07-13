@@ -17,6 +17,7 @@
   .search-term-desc {
     font-size: 1.7rem;
     margin-left: 4rem;
+    color: var(--invert-primary);
 
     @include set-small-screen {
       margin: 0 1.5rem;
@@ -30,6 +31,7 @@
   align-self: center;
   text-transform: uppercase;
   margin-top: -5rem;
+  color: var(--invert-primary);
 }
 
 .empty-results-logo {
@@ -42,12 +44,6 @@
 }
 
 .home-screen-cont.dark {
-  .search-term-desc {
-    color: $white;
-  }
-  .empty-results {
-    color: $white;
-  }
   .empty-results-logo {
     content: url("../../assets/Empty-pana_dark.svg");
   }
