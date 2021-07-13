@@ -4,6 +4,16 @@
   @include set-block-image(4rem, 13rem);
   .header-logo {
     @include set-block-image;
+
+    @media only screen and (max-width: 300px) {
+      content: url("./../../../assets/youtube_social_icon_red.svg");
+      @include set-block-image(4rem, 4rem);
+      margin-left: 1.3rem;
+    }
+  }
+
+  @media only screen and (max-width: 300px) {
+    @include set-block-image(4rem, 4rem);
   }
 }
 
@@ -28,6 +38,10 @@
     display: flex;
     margin: 0;
     flex: 0 0 87%;
+
+    @media only screen and (max-width: 520px) {
+      padding-right: 2rem;
+    }
   }
 }
 
@@ -40,7 +54,6 @@
   }
   .main-logo-link-cont,
   .dummy.search-btn,
-  .switch,
   .menu-items {
     display: none;
   }
@@ -52,12 +65,12 @@
 }
 
 header {
-  border-bottom: 1px solid rgba($color: black, $alpha: 0.1);
+  border-bottom: 1px solid var(--header-border-bottom);
   padding: 1rem 4rem 1rem 2.5rem;
   position: fixed;
   width: 100%;
   z-index: 10000;
-  background-color: rgba($color: white, $alpha: 0.99);
+  background-color: var(--header-bg);
   @include set-flex(row, space-between, center);
 
   .back-arrow {
@@ -74,13 +87,15 @@ header {
       width: 100%;
       font-size: inherit;
       padding: 0px 1rem;
-      border: 1px solid rgba($color: black, $alpha: 0.2);
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--input-color);
       outline: none;
       height: 3rem;
       border-right: none;
 
       &:focus {
-        border: 1px solid $input-focus-border;
+        border: 1px solid var(--input-focus-border);
       }
     }
 
@@ -89,13 +104,21 @@ header {
       align-items: center;
       padding: 1rem 2rem;
       height: 3rem;
-      background: $light-gray;
-      border: 1px solid rgba($color: $black, $alpha: 0.2);
+      background: var(--search-btn-bg);
+      border: 1px solid var(--search-btn-border);
       outline: none;
       cursor: pointer;
       img {
         @include set-block-image(2.2rem, 2.2rem);
       }
+    }
+
+    @include set-large-screen {
+      margin: 0rem 0rem 0rem 2rem;
+    }
+
+    @include set-small-screen {
+      display: none;
     }
   }
 
@@ -115,7 +138,25 @@ header {
 
   .dummy.search-btn {
     display: none;
+
+    @include set-small-screen {
+      display: block;
+      margin-left: auto;
+      background: none;
+      padding: 5px;
+      border: 1px solid var(--invert-primary);
+      border-radius: 50%;
+
+      .search-btn-icon {
+        @include set-block-image(1.5rem, 1.5rem);
+      }
+    }
+
+    @media only screen and (max-width: 300px) {
+      margin-left: auto;
+    }
   }
+
   .dropdown:hover .dropdown-content {
     display: block;
     cursor: pointer;
@@ -127,10 +168,8 @@ header {
     .dropdown-content {
       display: none;
       position: absolute;
-      background-color: $white;
       min-width: 7rem;
       right: 4.5%;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
       z-index: 0;
     }
 
@@ -139,135 +178,53 @@ header {
       outline: none;
       font-size: 1.6rem;
       padding: 1.8rem 0.8rem 0.8rem 0.8rem;
-      background: none;
-      border: 1px solid $white;
-      border-bottom: 1px solid $dark-channel-text;
+      background: var(--signout-bg);
+      border: 1px solid var(--signout-bg);
+      border-bottom: 1px solid #aaa;
       cursor: pointer;
+      color: var(--invert-primary);
     }
 
     img {
       @include set-block-image(3rem, 3rem);
       border-radius: 50%;
-      background: $white;
+      background: var(--white);
     }
   }
   .welcome-text {
-    color: $dark-gray;
+    color: var(--welcome-txt);
     max-width: 10rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    @include set-large-screen {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 520px) {
+    padding: 1.5rem 0.3rem;
   }
 }
 
 header.dark {
-  background-color: rgba(32, 32, 32, 0.99);
-  border-bottom: 1px solid rgba($color: white, $alpha: 0.1);
-
   .header-logo {
     content: url("../../../assets/youtube-dark.svg");
-  }
 
-  .search-input {
-    background: $dark-input-bg;
-    color: rgba($color: $white, $alpha: 0.88);
-    border: 1px solid $dark-input-border;
+    @media only screen and (max-width: 300px) {
+      content: url("./../../../assets/youtube_social_icon_red.svg");
+    }
   }
 
   .search-btn {
-    background: $dark-search-btn-bg;
-
     .search-btn-icon {
       content: url("../../../assets/search_icon_white.svg");
-      color: rgba($color: $white, $alpha: 0.88);
     }
   }
   .dummy.search-btn {
-    @include set-small-screen {
-      display: block;
-      padding: 5px;
-      border: 1px solid $white;
-      border-radius: 50%;
-    }
     .search-btn-icon {
       content: url("../../../assets/search_icon_white.svg");
-      color: rgba($color: $white, $alpha: 0.88);
-      @include set-small-screen {
-        @include set-block-image(1.5rem, 1.5rem);
-      }
     }
-  }
-  .welcome-text {
-    color: rgba($color: $white, $alpha: 0.88);
-  }
-
-  .sign-out-btn {
-    background: $dark-header-bg;
-    color: $white;
-    border: 1px solid $dark-header-bg;
-    border-bottom: 1px solid $dark-channel-text;
-  }
-
-  .menu-items img {
-    color: $white;
-  }
-}
-
-@include set-large-screen {
-  .welcome-text {
-    display: none;
-  }
-  header .search-box-form,
-  header.dark .search-box-form {
-    margin: 0rem 0rem 0rem 2rem;
-  }
-  .switch {
-    margin: 0 2rem;
-  }
-}
-
-@include set-small-screen {
-  header .search-box-form,
-  header.dark .search-box-form {
-    display: none;
-  }
-  header .dummy.search-btn {
-    display: block;
-    margin-left: auto;
-    background: none;
-    padding: 5px;
-    border: 1px solid $black;
-    border-radius: 50%;
-
-    .search-btn-icon {
-      @include set-block-image(1.5rem, 1.5rem);
-    }
-  }
-}
-
-@media only screen and (max-width: 520px) {
-  header,
-  header.dark {
-    padding: 1.5rem 0.3rem;
-  }
-
-  .active-search .search-box-form {
-    padding-right: 2rem;
-  }
-}
-
-@media only screen and (max-width: 300px) {
-  header .main-logo-cont {
-    @include set-block-image(4rem, 4rem);
-  }
-  header .main-logo-cont .header-logo,
-  header.dark .header-logo {
-    content: url("./../../../assets/youtube_social_icon_red.svg");
-    @include set-block-image(4rem, 4rem);
-    margin-left: 1.3rem;
-  }
-
-  header .dummy.search-btn {
-    margin-left: 9rem;
   }
 }
