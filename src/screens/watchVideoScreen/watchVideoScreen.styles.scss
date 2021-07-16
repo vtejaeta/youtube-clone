@@ -4,8 +4,12 @@
   padding: 3rem;
   padding-top: 10rem;
   min-height: 100vh;
-  background: $videos-grid-bg;
+  background: var(--videos-grid-bg);
   overflow: hidden;
+
+  @media only screen and (max-width: 450px) {
+    padding: 10rem 0 0 0;
+  }
 }
 
 .grid-cont {
@@ -44,6 +48,7 @@
     margin: 2rem 0 0;
     font-weight: 500;
     font-size: 1.8rem;
+    color: var(--invert-primary);
 
     @include set-small-screen {
       font-size: 1.6rem;
@@ -51,12 +56,12 @@
   }
 
   .main-video-channel-details {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--dull-box-border);
+    border-bottom: 1px solid var(--dull-box-border);
   }
 
   .main-video-upload-date {
-    color: $light-text-color;
+    color: var(--dull-text-color);
     margin: 0.2rem 0 1.5rem;
     font-size: 1.4rem;
   }
@@ -83,6 +88,7 @@
     font-size: 1.4rem;
     font-family: "Roboto", sans-serif;
     -webkit-box-orient: vertical;
+    color: var(--invert-primary);
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 0.5rem;
@@ -110,7 +116,7 @@
     border: none;
     outline: none;
     background: none;
-    color: $light-show-more-text;
+    color: var(--show-more-text-color);
     font-size: 1.3rem;
     font-weight: 550;
     line-height: 2rem;
@@ -120,6 +126,34 @@
 
   @include set-medium-screen {
     grid-area: 1 / 1 / 4 / 6;
+  }
+
+  @media only screen and (max-width: 450px) {
+    .main-video-player-cont {
+      width: 95%;
+      padding-top: 53%;
+      margin: 0 auto;
+    }
+
+    .main-video-title,
+    .main-video-upload-date {
+      padding: 0rem 2rem;
+    }
+
+    .main-video-title {
+      margin: 1rem 0 0;
+    }
+
+    .main-video-upload-date {
+      margin: 0.2rem 0 0;
+    }
+
+    .main-video-channel-details {
+      margin: 0 2rem;
+    }
+    .video-channel-name {
+      margin-bottom: 1rem;
+    }
   }
 }
 
@@ -132,7 +166,7 @@
   right: 0;
   width: 100%;
   height: 100%;
-  background: $thumbnail-bg;
+  background: var(--thumbnail-bg);
 }
 
 .next-videos-cont {
@@ -141,18 +175,18 @@
 
   .suggestion-text {
     width: 100%;
-    background: $white;
-    border: 1px solid #e6e6e6;
+    background: var(--header-bg);
+    border: 1px solid var(--suggestion-border);
     margin-bottom: 1.2rem;
     box-sizing: border-box;
     padding: 0.8rem 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 1.1rem;
-    color: rgba(17, 17, 17, 0.6);
+    color: var(--suggestion-text-color);
 
     &:hover {
-      color: rgba($black, 0.7);
+      color: var(--invert-primary);
       font-weight: bold;
     }
   }
@@ -176,13 +210,13 @@
 
       .video-metadata {
         order: 3;
-        color: $light-text-color;
+        color: var(--dull-text-color);
       }
 
       .channel-details {
         order: 2;
         margin: 0;
-        color: $light-text-color;
+        color: var(--dull-text-color);
         .channel-logo {
           display: none;
         }
@@ -227,7 +261,7 @@
           display: block;
           order: 4;
           margin-top: 0.6rem;
-          color: $light-text-color;
+          color: var(--dull-text-color);
         }
       }
 
@@ -319,47 +353,13 @@
   @include set-medium-screen {
     grid-area: 4 / 1 / 6 / 6;
   }
-}
 
-@media only screen and (max-width: 450px) {
-  .whole-video-wrapper {
-    padding: 10rem 0 0 0;
-  }
-
-  .next-videos-cont {
+  @media only screen and (max-width: 450px) {
     padding: 0rem 1.5rem;
   }
-
-  .main-video-cont {
-    .main-video-player-cont {
-      width: 95%;
-      padding-top: 53%;
-      margin: 0 auto;
-    }
-
-    .main-video-title,
-    .main-video-upload-date {
-      padding: 0rem 2rem;
-    }
-
-    .main-video-title {
-      margin: 1rem 0 0;
-    }
-
-    .main-video-upload-date {
-      margin: 0.2rem 0 0;
-    }
-
-    .main-video-channel-details {
-      margin: 0 2rem;
-    }
-    .video-channel-name {
-      margin-bottom: 1rem;
-    }
-  }
 }
 
-// === SKELETON(SUGGESTION-VIDEOS) STYLING ===
+// === SKELETON (SUGGESTION-VIDEOS) STYLING ===
 .next-videos-cont {
   .search-results-video-container-skeleton {
     padding: 0;
@@ -494,14 +494,6 @@
       .skeleton.title {
         width: 120%;
       }
-      // .skeleton-channel-details .skeleton.text {
-      //   margin: 0 0.3rem !important;
-      // }
-
-      // .skeleton.avatar {
-      //   display: block;
-      //   position: static;
-      // }
     }
   }
 }
@@ -537,52 +529,5 @@
     .skeleton.thumbnail {
       min-height: 20rem;
     }
-  }
-}
-
-// === DARK MODE ===
-.whole-video-wrapper.dark {
-  background: $dark-video-grid-bg;
-
-  .suggestion-text {
-    background: $dark-header-bg;
-    color: $light-suggestion-text;
-    font-weight: bold;
-    border: 1px solid $dark-border;
-
-    &:hover {
-      color: $white;
-    }
-  }
-
-  .channel-details .video-channel-name,
-  .results-video-author-details .video-metadata,
-  .results-video-author-details .description,
-  .main-video-cont .main-video-upload-date {
-    color: $dark-text-color;
-  }
-
-  .main-video-cont {
-    .main-video-title,
-    .video-description {
-      color: $white;
-    }
-  }
-
-  .show-more-btn {
-    color: $dark-text-color;
-  }
-
-  .main-video-channel-details {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .skeleton {
-    background: $dark-skeleton-bg;
-  }
-
-  .main-video-player {
-    background: $dark-thumbnail-bg;
   }
 }
