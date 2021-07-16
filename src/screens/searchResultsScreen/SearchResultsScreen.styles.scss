@@ -55,12 +55,6 @@
   @include set-flex(column, center, flex-start);
 }
 
-.search-results-video-container-skeleton.dark {
-  .skeleton {
-    background: $dark-skeleton-bg;
-  }
-}
-
 .skeleton-search-results {
   @include set-flex(row, flex-start, flex-start);
   margin: 3rem 2.2rem;
@@ -104,19 +98,24 @@
       top: 1%;
       left: 1%;
     }
+
     .skeleton.title,
     .skeleton.meta-text {
       margin-left: 6rem;
     }
+
     .skeleton.title {
       width: 15rem;
     }
+
     .skeleton.meta-text {
       width: 5rem;
     }
+
     .skeleton.text {
       display: none;
     }
+
     .skeleton-channel-details .skeleton.text {
       display: block;
       margin-left: 6rem !important;
@@ -127,6 +126,7 @@
   @media only screen and (max-width: 402px) {
     max-width: 25rem;
     margin: 3rem 3.2rem;
+
     .skeleton.thumbnail {
       @include set-block-image(15rem, 29rem);
     }
