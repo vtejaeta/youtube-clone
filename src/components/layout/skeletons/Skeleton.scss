@@ -1,7 +1,7 @@
 @import "../../../styles/main.scss";
 
 .skeleton {
-  background: $thumbnail-bg;
+  background: var(--skeleton-bg);
   margin: 0.5rem 0;
   border-radius: 0.3rem;
 }
@@ -40,22 +40,27 @@
 .video-container-skeleton {
   display: flex;
   flex-direction: column;
+
   .video-author-details-skeleton {
     display: flex;
     align-items: flex-start;
     margin-top: 1rem;
     margin-left: 0.5rem;
   }
+
   .video-details-skeleton {
     display: flex;
     flex-direction: column;
     margin-left: 0.8rem;
+
     .skeleton.title {
       width: 20rem;
+
       @include set-very-small-screen {
         width: 16rem;
       }
     }
+
     .skeleton.text {
       width: 10rem;
     }
@@ -68,20 +73,13 @@
   gap: 4.5rem 1.8rem;
   padding: 12.5rem 0;
   margin: 0 3.5rem;
-  // border-top: 4px solid rgba($color: $black, $alpha: 0.1);
 
   @media only screen and (max-width: 400px) {
     margin: 0 1.2rem;
     padding: 10.5rem 0;
   }
+
   @include set-very-small-screen {
     margin: 0 1.5rem;
-  }
-}
-
-.videos-section-cont-skeleton.dark,
-.video-container-skeleton.dark {
-  .skeleton {
-    background: $dark-skeleton-bg;
   }
 }
