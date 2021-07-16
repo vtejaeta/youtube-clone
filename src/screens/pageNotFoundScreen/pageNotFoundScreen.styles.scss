@@ -2,7 +2,7 @@
 
 .pageNotFound-cont {
   height: 100vh;
-  background: $videos-grid-bg;
+  background: var(--videos-grid-bg);
   @include set-flex;
   flex-direction: column;
 
@@ -17,13 +17,21 @@
 
   .home-link {
     padding: 1rem 1.6rem;
-    background: $youtube-red;
-    background: $black;
-    color: white;
+    background: var(--invert-primary);
+    color: var(--root-primary);
     border: none;
     border-radius: 2.4rem;
     cursor: pointer;
     font-size: 1.4rem;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .error-desc,
+  .page-description {
+    color: var(--invert-primary);
   }
 
   .error-desc {
@@ -35,19 +43,5 @@
     text-transform: uppercase;
     text-align: center;
     font-size: 1.4rem;
-  }
-}
-
-.pageNotFound-cont.dark {
-  background: $dark-video-grid-bg;
-
-  .home-link {
-    background: $white;
-    color: black;
-  }
-
-  .error-desc,
-  .page-description {
-    color: white;
   }
 }
