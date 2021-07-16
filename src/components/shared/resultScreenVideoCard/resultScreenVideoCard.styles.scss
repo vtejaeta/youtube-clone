@@ -5,13 +5,20 @@
 
   .video-thumbnail-image {
     @include set-block-image(20rem, 35rem);
-    background: $thumbnail-bg;
+    background: var(--thumbnail-bg);
+  }
+
+  .video-title {
+    color: var(--invert-primary);
+  }
+
+  .results-video-author-details {
+    color: var(--dull-text-color);
   }
 
   @include set-medium-screen {
     @include set-flex(column, flex-start, flex-start);
     max-width: 35rem;
-    // margin: 0 auto;
 
     .results-video-author-details {
       position: relative;
@@ -80,19 +87,5 @@
     .video-thumbnail-image {
       @include set-block-image(15rem, 22rem);
     }
-  }
-}
-
-.result-video-container.dark {
-  .video-title {
-    color: $white;
-  }
-
-  .video-thumbnail-image {
-    background: $dark-thumbnail-bg;
-  }
-
-  .results-video-author-details {
-    color: $dark-channel-text;
   }
 }
