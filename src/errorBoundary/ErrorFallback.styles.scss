@@ -1,7 +1,8 @@
 @import "../styles/main.scss";
 
 .error-compo {
-  background: $videos-grid-bg;
+  background: var(--videos-grid-bg);
+  color: var(--invert-primary);
   min-height: 100vh;
 }
 
@@ -12,7 +13,7 @@
   @include set-flex(column, center);
   font-size: 1.2rem;
   a {
-    color: $youtube-red;
+    color: var(--youtube-red);
   }
   max-width: 50rem;
   margin: 0 auto;
@@ -43,11 +44,10 @@
 .error-code-box {
   display: inline-block;
   margin-top: 2.2rem;
-  background: $thumbnail-bg;
-  background: #011627;
+  background: var(--error-box-bg);
   padding: 1rem 1.6rem;
   font-weight: bold;
-  color: $white;
+  color: var(--error-box-txt);
   align-self: center;
   justify-self: center;
   width: 20rem;
@@ -62,15 +62,7 @@
 
 //  === DARK MODE ===
 .error-compo.dark {
-  background: $dark-video-grid-bg;
-  color: $white;
-
   .sorry-illustrator {
     content: url("../assets/Feeling\ sorry-pana-light.svg");
-  }
-
-  .error-code-box {
-    background: $white;
-    color: #011627;
   }
 }
