@@ -1,19 +1,10 @@
 import React from "react";
 import SkeletonElement from "./SkeletonElement";
 import "../../shared/homeScreenVideoCard/homeScreenVideoCard.styles.scss";
-import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
 
 export default function SkeletonVideoCard() {
-  const { theme: UITheme } = useThemeStateFromRedux();
-
   return (
-    <div
-      className={
-        UITheme === "dark"
-          ? "video-container-skeleton dark"
-          : "video-container-skeleton"
-      }
-    >
+    <div className="video-container-skeleton">
       <SkeletonElement type="thumbnail" />
       <div className="video-author-details-skeleton">
         <SkeletonElement type="avatar" />

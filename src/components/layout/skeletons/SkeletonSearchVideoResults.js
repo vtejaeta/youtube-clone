@@ -37,13 +37,7 @@ export default function SkeletonSearchVideoResults() {
   }
 
   return (
-    <div
-      className={
-        UITheme === "dark"
-          ? "search-results-video-container-skeleton dark"
-          : "search-results-video-container-skeleton"
-      }
-    >
+    <div className="search-results-video-container-skeleton">
       {renderSkeletonGrid()}
     </div>
   );
