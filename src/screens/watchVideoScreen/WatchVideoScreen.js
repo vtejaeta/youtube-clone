@@ -1,18 +1,24 @@
 import React, { useEffect, useRef } from "react";
-import getSearchParam from "../../utils/searchParam.utils";
-import "./watchVideoScreen.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
+
+import getSearchParam from "../../utils/searchParam.utils";
+
 import {
   resetVideos,
   searchSuggestedVideos,
 } from "../../features/getSuggestionVideosSlice";
+
 import SuggestionVideosLayout from "../../components/layout/suggestionVideosLayout/SuggestionVideosLayout";
-import useSuggestionVideosFromRedux from "../../hooks/useSuggestionVideosFromRedux";
 import SkeletonSearchVideoResults from "../../components/layout/skeletons/SkeletonSearchVideoResults";
-import useVideoDetails from "../../hooks/useVideoDetails";
 import SkeletonElement from "../../components/layout/skeletons/SkeletonElement";
+
+import useVideoDetails from "../../hooks/useVideoDetails";
+import useSuggestionVideosFromRedux from "../../hooks/useSuggestionVideosFromRedux";
+
 import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
 import ErrorFallback from "../../errorBoundary/ErrorFallback";
+
+import "./watchVideoScreen.styles.scss";
 
 export default function WatchVideoScreen(props) {
   const dispatch = useDispatch();

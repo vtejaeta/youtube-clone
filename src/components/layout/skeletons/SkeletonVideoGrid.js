@@ -1,6 +1,7 @@
 import React from "react";
-import SkeletonVideoCard from "./SkeletonVideoCard";
 import { v4 as uuidv4 } from "uuid";
+
+import SkeletonVideoCard from "./SkeletonVideoCard";
 
 export default function SkeletonVideoGrid() {
   function renderSkeletonvideoGrid() {

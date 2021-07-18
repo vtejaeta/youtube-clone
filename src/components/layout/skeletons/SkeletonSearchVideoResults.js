@@ -1,12 +1,11 @@
 import React from "react";
-import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
 import { v4 as uuidv4 } from "uuid";
+
 import SkeletonElement from "./SkeletonElement";
+
 import "../../../screens/searchResultsScreen/searchResultsScreen.styles.scss";
 
 export default function SkeletonSearchVideoResults() {
-  const { theme: UITheme } = useThemeStateFromRedux();
-
   function renderSkeletonCard() {
     return (
       <div className="skeleton-search-results">

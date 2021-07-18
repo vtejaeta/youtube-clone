@@ -3,20 +3,24 @@
 .error-compo {
   background: var(--videos-grid-bg);
   color: var(--invert-primary);
+
   min-height: 100vh;
 }
 
 .error-msg-cont {
-  padding: 3rem;
   text-align: center;
-  padding-top: 15rem;
-  @include set-flex(column, center);
   font-size: 1.2rem;
+
+  padding: 3rem;
+  padding-top: 15rem;
+  margin: 0 auto;
+
+  max-width: 50rem;
+  @include set-flex(column, center);
+
   a {
     color: var(--youtube-red);
   }
-  max-width: 50rem;
-  margin: 0 auto;
 
   @media only screen and (max-width: 475px) {
     padding-top: 15rem;
@@ -24,8 +28,9 @@
 }
 
 .error-info-text {
-  font-size: 1.6rem;
   margin-top: 1.2rem;
+
+  font-size: 1.6rem;
   font-weight: bold;
 }
 
@@ -43,15 +48,20 @@
 
 .error-code-box {
   display: inline-block;
-  margin-top: 2.2rem;
-  background: var(--error-box-bg);
-  padding: 1rem 1.6rem;
-  font-weight: bold;
-  color: var(--error-box-txt);
   align-self: center;
   justify-self: center;
   width: 20rem;
+
+  background: var(--error-box-bg);
+  color: var(--error-box-txt);
+
+  font-weight: bold;
+
+  margin-top: 2.2rem;
+  padding: 1rem 1.6rem;
+
   cursor: move;
+
   overflow-x: scoll;
   overflow-y: hidden;
 }

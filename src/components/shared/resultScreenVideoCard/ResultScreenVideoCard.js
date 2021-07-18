@@ -1,6 +1,8 @@
 import React from "react";
+
 import VideoThumbnail from "../videoThumbnail/VideoThumbnail";
 import ResultScreenVideoDetails from "../resultScreenVideoDetails/ResultScreenVideoDetails";
+
 import "./resultScreenVideoCard.styles.scss";
 
 export default function ResultScreenVideoCard({
