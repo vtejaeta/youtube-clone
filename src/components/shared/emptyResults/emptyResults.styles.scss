@@ -1,0 +1,35 @@
+@import "../../../styles/main.scss";
+
+.empty-results-cont {
+  width: 100%;
+  @include set-flex(column, center, center);
+
+  .empty-results-logo {
+    @include set-block-image(30rem, 30rem);
+    align-self: center;
+    margin-bottom: 5rem;
+
+    @include set-medium-screen {
+      @include set-block-image(30rem, 28rem);
+    }
+
+    @include set-small-screen {
+      @include set-block-image(25rem, 20rem);
+    }
+  }
+
+  .empty-results {
+    font-size: 1.6rem;
+    text-align: center;
+    align-self: center;
+    text-transform: uppercase;
+    margin-top: -5rem;
+    color: var(--invert-primary);
+  }
+}
+
+.home-screen-cont.dark {
+  .empty-results-logo {
+    content: url("../../../assets/Empty-pana_dark.svg");
+  }
+}

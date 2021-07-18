@@ -11,45 +11,18 @@
 }
 
 .main-videos-cont {
-  padding: 10rem 0;
   min-height: 100vh;
+  padding: 10rem 0;
 
   .search-term-desc {
     font-size: 1.7rem;
-    margin-left: 4rem;
     color: var(--invert-primary);
+
+    margin-left: 4rem;
 
     @include set-small-screen {
       margin: 0 1.5rem;
     }
-  }
-}
-
-.empty-results {
-  font-size: 1.6rem;
-  text-align: center;
-  align-self: center;
-  text-transform: uppercase;
-  margin-top: -5rem;
-  color: var(--invert-primary);
-}
-
-.empty-results-logo {
-  @include set-block-image(37rem, 37rem);
-  align-self: center;
-
-  @include set-medium-screen {
-    @include set-block-image(30rem, 28rem);
-  }
-
-  @include set-small-screen {
-    @include set-block-image(25rem, 20rem);
-  }
-}
-
-.home-screen-cont.dark {
-  .empty-results-logo {
-    content: url("../../assets/Empty-pana_dark.svg");
   }
 }
 
@@ -61,8 +34,9 @@
 
 .skeleton-search-results {
   @include set-flex(row, flex-start, flex-start);
-  margin: 3rem 2.2rem;
   width: 90%;
+
+  margin: 3rem 2.2rem;
 
   .skeleton.thumbnail {
     @include set-block-image(20rem, 35rem);
@@ -71,6 +45,7 @@
 
   .skeleton-video-author-details {
     width: 45%;
+
     .skeleton.meta-text {
       margin-top: 1rem;
     }
@@ -122,8 +97,9 @@
 
     .skeleton-channel-details .skeleton.text {
       display: block;
-      margin-left: 6rem !important;
       width: 10rem !important;
+
+      margin-left: 6rem !important;
     }
   }
 

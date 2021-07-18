@@ -1,26 +1,19 @@
 import React from "react";
 import moment from "moment";
+
 import useSuggestionVideosFromRedux from "../../../hooks/useSuggestionVideosFromRedux";
-import Empty_Pana from "../../../assets/Empty-pana.svg";
+
 import ResultScreenVideoCard from "../../shared/resultScreenVideoCard/ResultScreenVideoCard";
+import EmptyResults from "../../shared/emptyResults/EmptyResults";
 
 export default function SuggestionVideosLayout() {
   const { suggestionVideos, error } = useSuggestionVideosFromRedux();
 
   if (error) throw error;
 
-  function renderVideos() {
+  function renderVideos(suggestionVideos) {
     if (suggestionVideos.length === 0) {
-      return (
-        <>
-          <img
-            src={Empty_Pana}
-            alt="Empty results"
-            className="empty-results-logo"
-          />
-          <strong className="empty-results">No results found</strong>
-        </>
-      );
+      return <EmptyResults />;
     }
     return suggestionVideos
       .filter(({ snippet }) => snippet !== undefined)
@@ -42,5 +35,5 @@ export default function SuggestionVideosLayout() {
       });
   }
 
-  return <>{renderVideos()}</>;
+  return <>{renderVideos(suggestionVideos)}</>;
 }

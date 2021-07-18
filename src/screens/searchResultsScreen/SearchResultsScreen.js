@@ -1,14 +1,18 @@
 import React from "react";
+
 import VideosLayout from "../../components/layout/videosLayout/VideosLayout";
 import ResultScreenVideoCard from "../../components/shared/resultScreenVideoCard/ResultScreenVideoCard";
+import SkeletonSearchVideoResults from "../../components/layout/skeletons/SkeletonSearchVideoResults";
+
 import useVideos from "../../hooks/useVideos";
 import useVideosStateFromRedux from "../../hooks/useVideosStateFromRedux";
-import "../homeScreen/homeScreen.styles.scss";
-import "../searchResultsScreen/searchResultsScreen.styles.scss";
-import SkeletonSearchVideoResults from "../../components/layout/skeletons/SkeletonSearchVideoResults";
+
 import getSearchParam from "../../utils/searchParam.utils";
+
 import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
 import ErrorFallback from "../../errorBoundary/ErrorFallback";
+
+import "../searchResultsScreen/searchResultsScreen.styles.scss";
 
 export default function SearchResultsScreen(props) {
   const term = getSearchParam(props.location, "search_term");

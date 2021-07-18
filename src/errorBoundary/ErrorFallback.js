@@ -1,7 +1,9 @@
-import { Link } from "@reach/router";
 import React from "react";
-import "./ErrorFallback.styles.scss";
+import { Link } from "@reach/router";
+
 import FeelingSorryPana from "../assets/Feeling sorry-pana.svg";
+
+import "./ErrorFallback.styles.scss";
 
 export default function ErrorFallback({ error }) {
   return (
