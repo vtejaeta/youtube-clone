@@ -38,8 +38,12 @@
   @include set-block-image(37rem, 37rem);
   align-self: center;
 
-  @include set-small-screen {
+  @include set-medium-screen {
     @include set-block-image(30rem, 28rem);
+  }
+
+  @include set-small-screen {
+    @include set-block-image(25rem, 20rem);
   }
 }
 
