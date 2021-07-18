@@ -1,35 +1,7 @@
-// === COLORS ===
-$white: #fff;
-$black: #000;
-$almost-black: #212121;
-$light-blue-bg: #30a0e0;
-$light-sky-blue: #e5f6fc;
-$videos-grid-bg: #f9f9f9;
-$light-gray: #f2f2f2;
-$thumbnail-bg: #ddd;
-$youtube-red: #ff0000;
-$skeleton-bg: $thumbnail-bg;
-$light-text-color: #555;
-$light-suggestion-text: #b9b7ae;
-$light-show-more-text: #606060;
-
-// === DARK COLORS ===
-$dark-header-bg: #202020;
-$dark-input-bg: #121212;
-$dark-input-border: #303030;
-$dark-search-btn-bg: #323232; //comp
-$dark-video-grid-bg: #181818;
-$dark-channel-text: #aaa;
-$dark-text-color: #aaa;
-$dark-thumbnail-bg: #525252;
-$dark-skeleton-bg: #2b2b2b;
-$dark-border: #2a2a2a;
-$dark-gray: #555454;
-
 [data-theme="light"] {
   --root-primary: white;
   --invert-primary: black;
-  --input-focus-border: #1c62b9; //no need
+  --input-focus-border: #1c62b9;
   --header-bg: #fffffffc;
   --header-border-bottom: #0000001a;
   --input-bg: #ffffff;
@@ -57,7 +29,7 @@ $dark-gray: #555454;
 [data-theme="dark"] {
   --root-primary: black;
   --invert-primary: white;
-  --input-focus-border: crimson; //no need
+  --input-focus-border: #1c62b9;
   --header-bg: #202020fc;
   --header-border-bottom: #ffffff1a;
   --input-bg: #121212;
