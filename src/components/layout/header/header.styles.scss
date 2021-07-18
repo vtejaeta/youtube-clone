@@ -93,6 +93,7 @@ header {
       outline: none;
       height: 3rem;
       border-right: none;
+      border-radius: 0.2rem 0 0 0.2rem;
 
       &:focus {
         border: 1px solid var(--input-focus-border);
