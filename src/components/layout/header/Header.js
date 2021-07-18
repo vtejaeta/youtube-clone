@@ -47,11 +47,13 @@ export default function Header() {
 
   function toggleClassName() {
     headerRef.current.classList.toggle("active-search");
+    inputRef.current.focus();
   }
 
   function formHandler(e) {
     e.preventDefault();
     let searchTerm = inputRef.current;
+
     if (searchTerm.value.trim()) {
       dispatch(resetVideos());
       headerRef.current.classList.remove("active-search");
