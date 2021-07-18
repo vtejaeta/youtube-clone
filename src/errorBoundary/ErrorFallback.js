@@ -1,14 +1,11 @@
 import { Link } from "@reach/router";
 import React from "react";
-import useThemeStateFromRedux from "../hooks/useThemeStateFromRedux";
 import "./ErrorFallback.styles.scss";
 import FeelingSorryPana from "../assets/Feeling sorry-pana.svg";
 
 export default function ErrorFallback({ error }) {
-  const { theme: UITheme } = useThemeStateFromRedux();
-
   return (
-    <div className={UITheme === "dark" ? "error-compo dark" : "error-compo"}>
+    <div className="error-compo">
       <section className="error-msg-cont">
         <img
           src={FeelingSorryPana}

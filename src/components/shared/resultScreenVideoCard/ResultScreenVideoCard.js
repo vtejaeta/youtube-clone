@@ -1,7 +1,6 @@
 import React from "react";
 import VideoThumbnail from "../videoThumbnail/VideoThumbnail";
 import ResultScreenVideoDetails from "../resultScreenVideoDetails/ResultScreenVideoDetails";
-import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
 import "./resultScreenVideoCard.styles.scss";
 
 export default function ResultScreenVideoCard({
@@ -12,16 +11,8 @@ export default function ResultScreenVideoCard({
   videoId,
   description,
 }) {
-  const { theme: UITheme } = useThemeStateFromRedux();
-
   return (
-    <section
-      className={
-        UITheme === "dark"
-          ? " result-video-container dark"
-          : "result-video-container"
-      }
-    >
+    <section className="result-video-container">
       <VideoThumbnail
         defaultThumbnail={defaultThumbnail}
         videoId={videoId}

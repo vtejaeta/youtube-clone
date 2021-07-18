@@ -1,20 +1,12 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-import useThemeStateFromRedux from "../../hooks/useThemeStateFromRedux";
-
 import pageNotFound from "../../assets/Page not Found.svg";
 import "./pageNotFoundScreen.styles.scss";
 
 export default function PageNotFoundScreen() {
-  const { theme } = useThemeStateFromRedux();
-
   return (
-    <main
-      className={
-        theme === "dark" ? "pageNotFound-cont dark" : "pageNotFound-cont"
-      }
-    >
+    <main className="pageNotFound-cont">
       <img
         src={pageNotFound}
         className="pageNotFound-illustartor"

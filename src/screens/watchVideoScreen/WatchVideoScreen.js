@@ -9,7 +9,6 @@ import {
 import SuggestionVideosLayout from "../../components/layout/suggestionVideosLayout/SuggestionVideosLayout";
 import useSuggestionVideosFromRedux from "../../hooks/useSuggestionVideosFromRedux";
 import SkeletonSearchVideoResults from "../../components/layout/skeletons/SkeletonSearchVideoResults";
-import useThemeStateFromRedux from "../../hooks/useThemeStateFromRedux";
 import useVideoDetails from "../../hooks/useVideoDetails";
 import SkeletonElement from "../../components/layout/skeletons/SkeletonElement";
 import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
@@ -20,7 +19,6 @@ export default function WatchVideoScreen(props) {
   const term = getSearchParam(props.location, "v");
   const descriptionRef = useRef(null);
   const { loading } = useSuggestionVideosFromRedux();
-  const { theme } = useThemeStateFromRedux();
   const { videoDetails } = useSelector((state) => state.getVideoDetails);
 
   useVideoDetails(term);
@@ -40,11 +38,7 @@ export default function WatchVideoScreen(props) {
 
   return (
     <>
-      <div
-        className={
-          theme === "dark" ? "whole-video-wrapper dark" : "whole-video-wrapper"
-        }
-      >
+      <div className="whole-video-wrapper">
         <div className="grid-cont">
           <div className="main-video-cont">
             {videoDetails && Boolean(Object.keys(videoDetails).length) ? (

@@ -2,7 +2,6 @@ import React from "react";
 import VideoThumbnail from "../videoThumbnail/VideoThumbnail";
 import HomeScreenVideoDetails from "../homeScreenVideoDetails/HomeScreenVideoDetails";
 import "./homeScreenVideoCard.styles.scss";
-import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
 
 export default function HomeScreenVideoCard({
   timeFromNow,
@@ -11,16 +10,8 @@ export default function HomeScreenVideoCard({
   videoId,
   defaultThumbnail,
 }) {
-  const { theme: UITheme } = useThemeStateFromRedux();
-
-  // throw Error("fknslkca a cvsalknviashvksai vhash vahs ivahv sa hvukhsak");
-
   return (
-    <section
-      className={
-        UITheme === "dark" ? " video-container dark" : "video-container"
-      }
-    >
+    <section className="video-container">
       <VideoThumbnail
         videoId={videoId}
         title={title}
