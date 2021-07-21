@@ -12,37 +12,46 @@ import getSearchParam from "../../utils/searchParam.utils";
 import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
 import ErrorFallback from "../../errorBoundary/ErrorFallback";
 
-import "../searchResultsScreen/searchResultsScreen.styles.scss";
+import "./searchResultsScreen.styles.scss";
 
-export default function SearchResultsScreen(props) {
-  const term = getSearchParam(props.location, "search_term");
-  const { loading } = useVideosStateFromRedux();
+function SearchResultsScreen({ term }) {
+  console.log(`Rendering SearchResultsScreen`);
+
+  if (!term) {
+    const errorMessage = new Error(
+      "OOPS! Got invalid url, please try a valid url or go to homepage"
+    );
+    throw errorMessage;
+  }
 
   useVideos(term);
+
+  const { loading } = useVideosStateFromRedux();
 
   return (
     <div className="home-screen-cont">
       <div className="whole-videos-cont">
-        {loading ? (
-          <SkeletonSearchVideoResults />
-        ) : (
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <div className="main-videos-cont">
-              {term && (
-                <p className="search-term-desc">
-                  Search results for{" "}
-                  <strong style={{ textTransform: "capitalize" }}>
-                    {term}
-                  </strong>
-                </p>
-              )}
-              <div className="video-section-cont search-results">
-                <VideosLayout Component={ResultScreenVideoCard} />
-              </div>
-            </div>
-          </ErrorBoundary>
-        )}
+        {loading && <SkeletonSearchVideoResults />}
+        <div className="main-videos-cont">
+          <p className="search-term-desc">
+            Search results for "
+            <strong style={{ textTransform: "capitalize" }}>{term}</strong>"
+          </p>
+          <div className="video-section-cont search-results">
+            <VideosLayout Component={ResultScreenVideoCard} />
+          </div>
+        </div>
       </div>
     </div>
+  );
+}
+
+export default function SearchResultsScreenWithErrorBoundary(props) {
+  const term = getSearchParam(props.location, "search_term");
+
+  return (
+    <ErrorBoundary FallbackComponent={ErrorFallback} key={term}>
+      <SearchResultsScreen term={term} {...props} />
+    </ErrorBoundary>
   );
 }
