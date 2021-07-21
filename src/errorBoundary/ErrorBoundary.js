@@ -1,18 +1,14 @@
 import React, { Component } from "react";
 
 export default class ErrorBoundary extends Component {
-  state = { hasError: false, error: null };
+  state = { error: null };
 
   static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error, info) {
-    console.error("ErrorBoundary caught an error", error, info);
+    return { error };
   }
 
   render() {
-    if (this.state.hasError) {
+    if (this.state.error) {
       return <this.props.FallbackComponent error={this.state.error} />;
     }
 
