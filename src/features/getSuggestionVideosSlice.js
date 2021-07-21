@@ -3,7 +3,7 @@ import youtube from "../apis/youtube";
 
 const initialState = {
   loading: false,
-  suggestionVideos: [],
+  suggestionVideos: null,
   error: null,
 };
 
@@ -15,18 +15,21 @@ const getSuggestionVideosSlice = createSlice({
       state.loading = action.payload;
     },
     setSuggestionVideos: (state, action) => {
+      state.loading = false;
       state.suggestionVideos = action.payload;
     },
     setError: (state, action) => {
+      state.loading = false;
       state.error = action.payload;
     },
-    resetVideos: (state) => {
-      state.suggestionVideos = [];
+    resetSuggestionVideos: (state) => {
+      state.suggestionVideos = null;
     },
   },
 });
 
 export const searchSuggestedVideos = (videoId) => async (dispatch) => {
+  dispatch(resetSuggestionVideos());
   dispatch(setLoading(true));
   try {
     const { data } = await youtube.get("search", {
@@ -41,8 +44,6 @@ export const searchSuggestedVideos = (videoId) => async (dispatch) => {
     dispatch(setSuggestionVideos(data.items));
   } catch (error) {
     dispatch(setError(error));
-  } finally {
-    dispatch(setLoading(false));
   }
 };
 
@@ -50,6 +51,6 @@ export const {
   setLoading,
   setSuggestionVideos,
   setError,
-  resetVideos,
+  resetSuggestionVideos,
 } = getSuggestionVideosSlice.actions;
 export default getSuggestionVideosSlice.reducer;

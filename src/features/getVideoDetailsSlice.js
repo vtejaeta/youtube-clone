@@ -3,7 +3,7 @@ import youtube from "../apis/youtube";
 
 const initialState = {
   loading: false,
-  videoDetails: [],
+  videoDetails: null,
   error: null,
 };
 
@@ -15,19 +15,21 @@ const getVideoDetailsSlice = createSlice({
       state.loading = action.payload;
     },
     setVideoDetails: (state, action) => {
+      state.loading = false;
       state.videoDetails = action.payload;
     },
     setError: (state, action) => {
+      state.loading = false;
       state.error = action.payload;
     },
-    resetVideos: (state) => {
-      state.videoDetails = [];
+    resetVideoDetails: (state) => {
+      state.videoDetails = null;
     },
   },
 });
 
 export const getVideoDetails = (videoId) => async (dispatch) => {
-  dispatch(resetVideos());
+  dispatch(resetVideoDetails());
   dispatch(setLoading(true));
   try {
     const { data } = await youtube.get("videos", {
@@ -37,19 +39,14 @@ export const getVideoDetails = (videoId) => async (dispatch) => {
         key: process.env.REACT_APP_YOUTUBE_APIKEY,
       },
     });
-    dispatch(setVideoDetails(data.items[0]));
+    data.items.length > 0
+      ? dispatch(setVideoDetails(data.items[0]))
+      : dispatch(setError(Error("Got a bad request")));
   } catch (error) {
-    console.log({ error });
     dispatch(setError(error));
-  } finally {
-    dispatch(setLoading(false));
   }
 };
 
-export const {
-  setLoading,
-  setVideoDetails,
-  setError,
-  resetVideos,
-} = getVideoDetailsSlice.actions;
+export const { setLoading, setVideoDetails, setError, resetVideoDetails } =
+  getVideoDetailsSlice.actions;
 export default getVideoDetailsSlice.reducer;
