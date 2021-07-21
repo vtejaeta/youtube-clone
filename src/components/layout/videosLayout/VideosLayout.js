@@ -1,8 +1,8 @@
 import React from "react";
 import moment from "moment";
 
-import useVideosStateFromRedux from "../../../hooks/useVideosStateFromRedux";
 import EmptyResults from "../../shared/emptyResults/EmptyResults";
+import useVideosStateFromRedux from "../../../hooks/useVideosStateFromRedux";
 
 export default function VideosLayout({ Component }) {
   const { videosByTerm, error } = useVideosStateFromRedux();
@@ -15,10 +15,12 @@ export default function VideosLayout({ Component }) {
     if (videosByTerm.length === 0) {
       return <EmptyResults />;
     }
+
     return videosByTerm.map(({ snippet, id }) => {
       const timeFromNow = moment(
         new Date(snippet.publishTime).toLocaleString()
       ).fromNow();
+
       return (
         <Component
           key={id.videoId}
@@ -32,5 +34,5 @@ export default function VideosLayout({ Component }) {
       );
     });
   }
-  return <>{renderVideos(videosByTerm)}</>;
+  return <>{videosByTerm && renderVideos(videosByTerm)}</>;
 }

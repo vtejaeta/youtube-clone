@@ -35,5 +35,5 @@ export default function SuggestionVideosLayout() {
       });
   }
 
-  return <>{renderVideos(suggestionVideos)}</>;
+  return <>{suggestionVideos && renderVideos(suggestionVideos)}</>;
 }
