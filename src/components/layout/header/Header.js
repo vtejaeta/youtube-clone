@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
 import { navigate } from "@reach/router";
 import { useDispatch } from "react-redux";
 
 import searchIcon from "../../../assets/search-icon.svg";
 import backArrowBlack from "../../../assets/arrow_back_black.svg";
 
-import { setToggleTheme } from "../../../features/themeSlice";
 import { resetVideos } from "../../../features/getVideosByTermSlice";
 
 import useUserStateFromRedux from "../../../hooks/useUserStateFromRedux";
-import useThemeStateFromRedux from "../../../hooks/useThemeStateFromRedux";
+import useTheme from "../../../hooks/useTheme";
+import useClickListener from "../../../hooks/useClickListener";
 
 import ThemeToggleSwitch from "../../shared/themeToggleSwitch/ThemeToggleSwitch";
 import SignOutButton from "../../shared/signOutButton/SignOutButton";
@@ -20,29 +20,21 @@ import "./header.styles.scss";
 export default function Header() {
   const headerRef = React.useRef(null);
   const inputRef = React.useRef(null);
+
   const { userName } = useUserStateFromRedux();
 
-  const { theme: UITheme } = useThemeStateFromRedux();
+  const [theme, setTheme] = useTheme();
 
-  document.documentElement.setAttribute("data-theme", UITheme);
+  const removeActiveSearch = useCallback((ref) => {
+    ref.current.classList.remove("active-search");
+  }, []);
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (headerRef.current && !headerRef.current.contains(event.target)) {
-        headerRef.current.classList.remove("active-search");
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [headerRef]);
+  useClickListener(headerRef, removeActiveSearch);
 
   const dispatch = useDispatch();
 
   function toggleTheme() {
-    dispatch(setToggleTheme());
+    setTheme((theme) => (theme === "dark" ? "light" : "dark"));
   }
 
   function toggleClassName() {
@@ -63,7 +55,7 @@ export default function Header() {
   }
 
   return (
-    <header className={UITheme === "dark" ? "dark" : ""} ref={headerRef}>
+    <header className={theme === "dark" ? "dark" : ""} ref={headerRef}>
       <YoutubeLogo />
       <button type="button" className="back-arrow" onClick={toggleClassName}>
         <img
@@ -75,7 +67,7 @@ export default function Header() {
       <form className="search-box-form" onSubmit={formHandler}>
         <input
           type="search"
-          aria-label="search"
+          aria-label="Search for videos"
           placeholder="Search"
           className="search-input"
           ref={inputRef}
@@ -99,7 +91,7 @@ export default function Header() {
         <p className="welcome-text">
           Hello <strong>{userName?.toUpperCase()}</strong>
         </p>
-        <ThemeToggleSwitch theme={UITheme} toggleTheme={toggleTheme} />
+        <ThemeToggleSwitch theme={theme} toggleTheme={toggleTheme} />
         <SignOutButton dispatch={dispatch} />
       </div>
     </header>

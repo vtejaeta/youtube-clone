@@ -1,5 +1,5 @@
 import React from "react";
-import moment from "moment";
+import { formatDistanceToNowStrict } from "date-fns";
 
 import EmptyResults from "../../shared/emptyResults/EmptyResults";
 import useVideosStateFromRedux from "../../../hooks/useVideosStateFromRedux";
@@ -17,9 +17,15 @@ export default function VideosLayout({ Component }) {
     }
 
     return videosByTerm.map(({ snippet, id }) => {
-      const timeFromNow = moment(
-        new Date(snippet.publishTime).toLocaleString()
-      ).fromNow();
+      // const timeFromNow = moment(
+      //   new Date(snippet.publishTime).toLocaleString()
+      // ).fromNow();
+
+      const timeFromNow = `${formatDistanceToNowStrict(
+        new Date(snippet.publishTime),
+        new Date(),
+        { addSuffix: true }
+      )} ago`;
 
       return (
         <Component

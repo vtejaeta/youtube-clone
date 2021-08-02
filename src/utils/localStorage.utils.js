@@ -1,11 +1,11 @@
 export function saveToLocalStorage(itemName, item) {
-  localStorage.setItem(itemName, item);
+  window.localStorage.setItem(itemName, item);
 }
 
 export function getFromLocalStorage(itemName) {
-  return localStorage.getItem(itemName);
+  return window.localStorage.getItem(itemName);
 }
 
 export function removeFromLocalStorage(itemName) {
-  localStorage.removeItem(itemName);
+  window.localStorage.removeItem(itemName);
 }

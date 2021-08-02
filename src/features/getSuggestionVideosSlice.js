@@ -24,6 +24,7 @@ const getSuggestionVideosSlice = createSlice({
     },
     resetSuggestionVideos: (state) => {
       state.suggestionVideos = null;
+      state.error = null;
     },
   },
 });
@@ -43,7 +44,7 @@ export const searchSuggestedVideos = (videoId) => async (dispatch) => {
     });
     dispatch(setSuggestionVideos(data.items));
   } catch (error) {
-    dispatch(setError(error));
+    dispatch(setError({ message: error.message }));
   }
 };
 
