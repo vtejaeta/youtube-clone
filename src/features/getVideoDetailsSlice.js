@@ -24,6 +24,7 @@ const getVideoDetailsSlice = createSlice({
     },
     resetVideoDetails: (state) => {
       state.videoDetails = null;
+      state.error = null;
     },
   },
 });
@@ -39,11 +40,13 @@ export const getVideoDetails = (videoId) => async (dispatch) => {
         key: process.env.REACT_APP_YOUTUBE_APIKEY,
       },
     });
-    data.items.length > 0
-      ? dispatch(setVideoDetails(data.items[0]))
-      : dispatch(setError(Error("Got a bad request")));
+    if (data.items.length > 0) {
+      dispatch(setVideoDetails(data.items[0]));
+    } else {
+      throw new Error("Got a bad request");
+    }
   } catch (error) {
-    dispatch(setError(error));
+    dispatch(setError({ message: error.message }));
   }
 };
 

@@ -24,6 +24,7 @@ const getVideosByTermSlice = createSlice({
     },
     resetVideos: (state) => {
       state.videosByTerm = null;
+      state.error = null;
     },
   },
 });
@@ -43,7 +44,7 @@ export const searchVideosByTerm = (searchTerm) => async (dispatch) => {
     });
     dispatch(setVideosByTerm(data.items));
   } catch (error) {
-    dispatch(setError(error));
+    dispatch(setError({ message: error.message }));
   }
 };
 
