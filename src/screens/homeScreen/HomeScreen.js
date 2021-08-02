@@ -16,8 +16,6 @@ export default function HomeScreen() {
   useVideos("JavaScript crash course");
   const { loading } = useVideosStateFromRedux();
 
-  console.log("Rendering HomeScreen");
-
   return (
     <main className="home-screen-cont">
       <div className="whole-videos-cont">

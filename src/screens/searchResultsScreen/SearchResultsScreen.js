@@ -15,8 +15,6 @@ import ErrorFallback from "../../errorBoundary/ErrorFallback";
 import "./searchResultsScreen.styles.scss";
 
 function SearchResultsScreen({ term }) {
-  console.log(`Rendering SearchResultsScreen`);
-
   if (!term) {
     const errorMessage = new Error(
       "OOPS! Got invalid url, please try a valid url or go to homepage"

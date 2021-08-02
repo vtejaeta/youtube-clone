@@ -51,6 +51,11 @@
       color: white;
       background: #302281;
     }
+
+    &:focus {
+      color: white;
+      background: #302281;
+    }
   }
 
   @include set-desktop-screen {
