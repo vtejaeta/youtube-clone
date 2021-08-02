@@ -32,6 +32,10 @@
     outline: none;
     margin-right: 1rem;
     flex: 0 0 10%;
+
+    &:focus {
+      outline: 1px solid var(--invert-primary);
+    }
   }
 
   .search-box-form {
@@ -112,6 +116,15 @@ header {
       img {
         @include set-block-image(2.2rem, 2.2rem);
       }
+
+      &:focus {
+        background-color: var(--search-btn-hover);
+        outline: 1px solid var(--invert-primary);
+      }
+
+      &:hover {
+        background-color: var(--search-btn-hover);
+      }
     }
 
     @include set-large-screen {
@@ -165,33 +178,49 @@ header {
     border: none;
     z-index: 0;
   }
-  .menu-items {
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      min-width: 7rem;
-      right: 4.5%;
-      z-index: 0;
-    }
 
-    .sign-out-btn {
-      font-family: inherit;
-      outline: none;
-      font-size: 1.6rem;
-      padding: 1.8rem 0.8rem 0.8rem 0.8rem;
-      background: var(--signout-bg);
-      border: 1px solid var(--signout-bg);
-      border-bottom: 1px solid #aaa;
-      cursor: pointer;
-      color: var(--invert-primary);
+  .menu-items.dropdown {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: 1px solid var(--invert-primary);
     }
 
     img {
       @include set-block-image(3rem, 3rem);
       border-radius: 50%;
+      color: var(--invert-primary);
       background: var(--white);
     }
   }
+
+  .dropdown-content {
+    position: absolute;
+    min-width: 7rem;
+    right: 4.5%;
+    top: 75%;
+    z-index: -1;
+  }
+
+  .sign-out-btn {
+    font-family: inherit;
+    outline: none;
+    font-size: 1.6rem;
+    padding: 1.8rem 0.8rem 0.8rem 0.8rem;
+    background: var(--signout-bg);
+    border: 1px solid var(--signout-bg);
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
+    color: var(--invert-primary);
+
+    &:focus {
+      border-bottom: 2px solid var(--invert-primary);
+    }
+  }
+
   .welcome-text {
     color: var(--welcome-txt);
     max-width: 10rem;

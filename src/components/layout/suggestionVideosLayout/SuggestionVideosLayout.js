@@ -1,5 +1,5 @@
 import React from "react";
-import moment from "moment";
+import { formatDistanceToNowStrict } from "date-fns";
 
 import useSuggestionVideosFromRedux from "../../../hooks/useSuggestionVideosFromRedux";
 
@@ -18,9 +18,16 @@ export default function SuggestionVideosLayout() {
     return suggestionVideos
       .filter(({ snippet }) => snippet !== undefined)
       .map(({ snippet, id }) => {
-        const timeFromNow = moment(
-          new Date(snippet.publishTime).toLocaleString()
-        ).fromNow();
+        // const timeFromNow = moment(
+        //   new Date(snippet.publishTime).toLocaleString()
+        // ).fromNow();
+
+        const timeFromNow = `${formatDistanceToNowStrict(
+          new Date(snippet.publishTime),
+          new Date(),
+          { addSuffix: true }
+        )} ago`;
+
         return (
           <ResultScreenVideoCard
             key={id.videoId}
