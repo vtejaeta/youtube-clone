@@ -32,6 +32,10 @@
 
   font-size: 1.6rem;
   font-weight: bold;
+
+  @media only screen and (max-width: 320px) {
+    font-size: 1.4rem;
+  }
 }
 
 .error-info-text.span {
@@ -40,10 +44,6 @@
 
 .sorry-illustrator {
   @include set-block-image(20rem, 20rem);
-
-  @include set-very-small-screen {
-    @include set-block-image(22rem, 22rem);
-  }
 }
 
 .error-code-box {

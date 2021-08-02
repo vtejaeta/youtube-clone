@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import userReducer from "../features/userSlice";
 import getVideosByTermReducer from "../features/getVideosByTermSlice";
 import themeReducer from "../features/themeSlice";

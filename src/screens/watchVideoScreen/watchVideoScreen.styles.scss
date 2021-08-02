@@ -349,6 +349,10 @@
     }
   }
 
+  .error-msg-cont {
+    padding: 3rem 0;
+  }
+
   @include set-medium-screen {
     grid-area: 4 / 1 / 6 / 6;
   }

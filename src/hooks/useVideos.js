@@ -5,13 +5,14 @@ import {
   searchVideosByTerm,
 } from "../features/getVideosByTermSlice";
 
-export default function useVideos(searchTerm = "ReactJS") {
+export default function useVideos(searchTerm) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(resetVideos());
     dispatch(searchVideosByTerm(searchTerm));
 
-    // return () => dispatch(resetVideos());
+    return () => {
+      dispatch(resetVideos());
+    };
   }, [dispatch, searchTerm]);
 }
