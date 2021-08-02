@@ -6,7 +6,13 @@ import "./signInButton.styles.scss";
 
 export default function SignInButton({ logUserIn }) {
   return (
-    <div className="sign-in btn" onClick={() => logUserIn(false)}>
+    <div
+      className="sign-in btn"
+      role="button"
+      tabIndex="0"
+      onClick={() => logUserIn(false)}
+      onKeyPress={() => logUserIn(false)}
+    >
       <div className="google-logo-cont">
         <img src={GoogleSVG} alt="Google logo" className="google-svg" />
       </div>
