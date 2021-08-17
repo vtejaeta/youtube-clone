@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { navigate } from "@reach/router";
 
 import { logUserOut } from "../../../features/userSlice";
@@ -9,6 +9,7 @@ export default function SignOutButton({ dispatch }) {
   const [click, setClick] = useState(false);
 
   const signoutMenuRef = useRef();
+  const menuIconRef = useRef();
 
   const { userPhoto } = useUserStateFromRedux();
 
@@ -19,6 +20,24 @@ export default function SignOutButton({ dispatch }) {
   function toggle() {
     setClick((click) => !click);
   }
+
+  useEffect(() => {
+    function shiftFocus(e) {
+      if (e.key === "Tab" || e.keyCode === 9) {
+        if (!e.shiftKey && document.activeElement === menuIconRef.current) {
+          setClick(true);
+          signoutMenuRef.current && signoutMenuRef.current.focus();
+          e.preventDefault();
+        }
+      }
+    }
+
+    window.addEventListener("keydown", shiftFocus);
+
+    return () => {
+      window.removeEventListener("keydown", shiftFocus);
+    };
+  }, []);
 
   useClickListener(signoutMenuRef, closeMenu);
 
@@ -32,6 +51,7 @@ export default function SignOutButton({ dispatch }) {
         aria-expanded={click}
         aria-label="menu with user pic"
         onClick={toggle}
+        ref={menuIconRef}
       >
         <img src={userPhoto} alt="User pic" />
       </button>
@@ -41,12 +61,11 @@ export default function SignOutButton({ dispatch }) {
           id="menu-sign-out"
           role="menu"
           aria-labelledby="signout-menu"
-          ref={signoutMenuRef}
-          tabIndex="0"
         >
           <button
             className="sign-out-btn"
             role="menuitem"
+            ref={signoutMenuRef}
             onClick={() => {
               dispatch(logUserOut());
               navigate("/");
