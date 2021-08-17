@@ -29,13 +29,8 @@
     cursor: pointer;
     background: none;
     border: none;
-    outline: none;
     margin-right: 1rem;
     flex: 0 0 10%;
-
-    &:focus {
-      outline: 1px solid var(--invert-primary);
-    }
   }
 
   .search-box-form {
@@ -94,12 +89,12 @@ header {
       border: 1px solid var(--input-border);
       background: var(--input-bg);
       color: var(--input-color);
-      outline: none;
       height: 3rem;
       border-right: none;
       border-radius: 0.2rem 0 0 0.2rem;
 
       &:focus {
+        outline: none;
         border: 1px solid var(--input-focus-border);
       }
     }
@@ -111,7 +106,6 @@ header {
       height: 3rem;
       background: var(--search-btn-bg);
       border: 1px solid var(--search-btn-border);
-      outline: none;
       cursor: pointer;
       img {
         @include set-block-image(2.2rem, 2.2rem);
@@ -119,7 +113,6 @@ header {
 
       &:focus {
         background-color: var(--search-btn-hover);
-        outline: 1px solid var(--invert-primary);
       }
 
       &:hover {
@@ -181,13 +174,8 @@ header {
 
   .menu-items.dropdown {
     border: none;
-    outline: none;
     background: none;
     cursor: pointer;
-
-    &:focus {
-      outline: 1px solid var(--invert-primary);
-    }
 
     img {
       @include set-block-image(3rem, 3rem);
@@ -207,7 +195,6 @@ header {
 
   .sign-out-btn {
     font-family: inherit;
-    outline: none;
     font-size: 1.6rem;
     padding: 1.8rem 0.8rem 0.8rem 0.8rem;
     background: var(--signout-bg);

@@ -6,10 +6,6 @@ input[type="checkbox"] {
   appearance: none;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
-
-  &:focus {
-    outline: 1px solid var(--invert-primary);
-  }
 }
 
 .toggle {

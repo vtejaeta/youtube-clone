@@ -67,7 +67,12 @@ export default function WatchVideoScreen(props) {
             {loadingVideoDetails && <SkeletonVideoPlayer />}
           </div>
           <div className="next-videos-cont">
-            <button className="suggestion-text">Suggestion Videos</button>
+            <button
+              className="suggestion-text"
+              aria-label="Video category name"
+            >
+              Suggestion Videos
+            </button>
             {loadingSuggestionVideos ? (
               <SkeletonSearchVideoResults />
             ) : (
