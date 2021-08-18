@@ -36,6 +36,17 @@
 .search-results-video-container-skeleton {
   padding: 10rem 0;
   @include set-flex(column, center, flex-start);
+
+  @include set-medium-screen {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 4.5rem 1.8rem;
+    margin: 0 3.5rem;
+  }
+
+  @media only screen and (max-width: 400px) {
+    margin: 0 1.2rem;
+  }
 }
 
 .skeleton-search-results {
@@ -45,8 +56,12 @@
   margin: 3rem 2.2rem;
 
   .skeleton.thumbnail {
-    @include set-block-image(20rem, 35rem);
+    @include set-block-image(18rem, 28rem);
     margin-right: 2rem;
+
+    @include set-medium-screen {
+      @include set-block-image(100%, 100%);
+    }
   }
 
   .skeleton-video-author-details {
@@ -71,6 +86,8 @@
 
   @include set-medium-screen {
     @include set-flex(column, flex-start, flex-start);
+    width: 100%;
+    margin: 0;
 
     .skeleton-video-author-details {
       position: relative;
@@ -109,18 +126,9 @@
     }
   }
 
-  @media only screen and (max-width: 402px) {
-    max-width: 25rem;
-    margin: 3rem 3.2rem;
-
-    .skeleton.thumbnail {
-      @include set-block-image(15rem, 29rem);
-    }
-  }
-
-  @media only screen and (max-width: 350px) {
-    .skeleton.thumbnail {
-      @include set-block-image(15rem, 25rem);
-    }
-  }
+  // @media only screen and (max-width: 350px) {
+  //   .skeleton.thumbnail {
+  //     @include set-block-image(15rem, 25rem);
+  //   }
+  // }
 }
