@@ -17,16 +17,20 @@ export default function VideoDetails({ videoDetails }) {
         <p className="video-channel-name">
           {videoDetails.snippet.channelTitle}
         </p>
-        <pre className="video-description" ref={descriptionRef}>
-          {videoDetails.snippet.description}
-        </pre>
-        <button
-          className="show-more-btn"
-          onClick={toggleDescription}
-          data-hover="SHOW LESS"
-        >
-          <span>SHOW MORE</span>
-        </button>
+        {videoDetails.snippet.description && (
+          <>
+            <pre className="video-description" ref={descriptionRef}>
+              {videoDetails.snippet.description}
+            </pre>
+            <button
+              className="show-more-btn"
+              onClick={toggleDescription}
+              data-hover="SHOW LESS"
+            >
+              <span>SHOW MORE</span>
+            </button>
+          </>
+        )}
       </div>
     </>
   );
