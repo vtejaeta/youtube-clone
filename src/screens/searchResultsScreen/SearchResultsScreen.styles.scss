@@ -8,6 +8,12 @@
     width: 100%;
     @include set-flex(row, flex-start, flex-start);
   }
+
+  @include set-medium-screen {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 4.5rem 1.8rem;
+  }
 }
 
 .main-videos-cont {
@@ -20,8 +26,8 @@
 
     margin-left: 4rem;
 
-    @include set-small-screen {
-      margin: 0 1.5rem;
+    @media only screen and (max-width: 400px) {
+      margin: 0 1.7rem;
     }
   }
 }
