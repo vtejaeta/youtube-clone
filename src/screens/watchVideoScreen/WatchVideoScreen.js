@@ -49,15 +49,17 @@ export default function WatchVideoScreen(props) {
         <div className="grid-cont">
           <div className="main-video-cont">
             <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <div className="main-video-player-cont">
-                <iframe
-                  src={`https://www.youtube.com/embed/${term}`}
-                  title="video player"
-                  frameBorder="0"
-                  allowFullScreen
-                  className="main-video-player"
-                />
-              </div>
+              <>
+                <div className="main-video-player-cont">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${term}`}
+                    title="video player"
+                    frameBorder="0"
+                    allowFullScreen
+                    className="main-video-player"
+                  />
+                </div>
+              </>
             </ErrorBoundary>
             {videoDetails && (
               <>

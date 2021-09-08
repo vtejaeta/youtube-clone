@@ -10,8 +10,9 @@ export default function ThemeToggleSwitch({ theme, toggleTheme }) {
         className="toggle"
         checked={theme === "light" ? false : true}
         aria-checked={theme === "light" ? false : true}
+        onKeyUp={(event) => event.key === "Enter" && toggleTheme()}
+        onSubmit={toggleTheme}
         onChange={toggleTheme}
-        onKeyPress={toggleTheme}
         aria-label="Toggle theme"
       ></input>
     </>
