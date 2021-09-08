@@ -1,0 +1,134 @@
+@import "../../styles/main.scss";
+
+.video-section-cont.search-results {
+  @include set-flex(column, center, flex-start);
+  padding: 2.5rem 0;
+
+  .video-container {
+    width: 100%;
+    @include set-flex(row, flex-start, flex-start);
+  }
+
+  @include set-medium-screen {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 4.5rem 1.8rem;
+  }
+}
+
+.main-videos-cont {
+  min-height: 100vh;
+  padding: 10rem 0;
+
+  .search-term-desc {
+    font-size: 1.7rem;
+    color: var(--invert-primary);
+
+    margin-left: 4rem;
+
+    @media only screen and (max-width: 400px) {
+      margin: 0 1.7rem;
+    }
+  }
+}
+
+// === SKELETON STYLING ===
+.search-results-video-container-skeleton {
+  padding: 10rem 0;
+  @include set-flex(column, center, flex-start);
+
+  @include set-medium-screen {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 4.5rem 1.8rem;
+    margin: 0 3.5rem;
+  }
+
+  @media only screen and (max-width: 400px) {
+    margin: 0 1.2rem;
+  }
+}
+
+.skeleton-search-results {
+  @include set-flex(row, flex-start, flex-start);
+  width: 90%;
+
+  margin: 3rem 2.2rem;
+
+  .skeleton.thumbnail {
+    @include set-block-image(18rem, 28rem);
+    margin-right: 2rem;
+
+    @include set-medium-screen {
+      @include set-block-image(100%, 100%);
+    }
+  }
+
+  .skeleton-video-author-details {
+    width: 45%;
+
+    .skeleton.meta-text {
+      margin-top: 1rem;
+    }
+
+    .skeleton-channel-details {
+      @include set-flex(row, flex-start);
+      .skeleton.text {
+        width: 25%;
+        margin-left: 1rem;
+      }
+    }
+
+    .skeleton.text {
+      width: 80%;
+    }
+  }
+
+  @include set-medium-screen {
+    @include set-flex(column, flex-start, flex-start);
+    width: 100%;
+    margin: 0;
+
+    .skeleton-video-author-details {
+      position: relative;
+      margin-top: 1.1rem;
+    }
+
+    .skeleton-channel-details .skeleton.avatar {
+      @include set-block-image(4.5rem, 4.5rem);
+      position: absolute;
+      top: 1%;
+      left: 1%;
+    }
+
+    .skeleton.title,
+    .skeleton.meta-text {
+      margin-left: 6rem;
+    }
+
+    .skeleton.title {
+      width: 15rem;
+    }
+
+    .skeleton.meta-text {
+      width: 5rem;
+    }
+
+    .skeleton.text {
+      display: none;
+    }
+
+    .skeleton-channel-details .skeleton.text {
+      display: block;
+      width: 10rem !important;
+
+      margin-left: 6rem !important;
+    }
+  }
+
+  // @media only screen and (max-width: 350px) {
+  //   .skeleton.thumbnail {
+  //     @include set-block-image(15rem, 25rem);
+  //   }
+  // }
+}
