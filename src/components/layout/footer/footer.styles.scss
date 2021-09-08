@@ -1,0 +1,26 @@
+@import "./../../../styles/main.scss";
+
+.footer-ctn {
+  padding-top: 5rem;
+  background-color: var(--videos-grid-bg);
+
+  font-size: 1.3rem;
+
+  color: var(--invert-primary);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > * {
+    margin-bottom: 0.3rem;
+  }
+
+  .storyset-link {
+    text-decoration: none;
+  }
+
+  .github-link {
+    color: #2962ff;
+  }
+}
