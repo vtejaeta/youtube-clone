@@ -1,4 +1,4 @@
-# [Youtube clone built with React, Firebase, Redux toolkit, Sass](https://youtube-clone-two-omega.vercel.app/)
+# Youtube clone built with React, Firebase, Redux toolkit, Sass
 
 <img width="920" alt="darkmode_youtube_clone" src="https://user-images.githubusercontent.com/65386350/132649773-ad8f0aff-445c-4437-843b-47391345b1b4.png">
 
