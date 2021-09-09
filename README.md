@@ -1,44 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# [Youtube clone built with React, Firebase, Redux toolkit, Sass](https://youtube-clone-two-omega.vercel.app/)
 
-## Available Scripts
+<img width="920" alt="darkmode_youtube_clone" src="https://user-images.githubusercontent.com/65386350/132649773-ad8f0aff-445c-4437-843b-47391345b1b4.png">
 
-In the project directory, you can run:
+<!-- <div align="center>
+<a href="https://www.emojione.com/emoji/1f410">
+  <img
+  width="250"
+    alt="goat"
+    src="https://raw.githubusercontent.com/testing-library/react-testing-library/main/other/goat.png"
+  />
+</a></div> -->
 
-### `yarn start`
+## Overview
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Hello 👋, Welcome to my project of Youtube clone which was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template. This includes some basic functionality of Youtube, like sign-in with Google, searching videos, watching videos, get recommended videos. Guess what even the **Dark mode** is available.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Tech stack used in this project -
 
-### `yarn test`
+- JavaScript Library: **React**
+- Navigation: **Reach Router**
+- Authentication: **Firebase**
+- State management: **Redux Toolkit**
+- Styling: **Sass**
+- Testing: **React testing library**, **Jest**
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+From one of my connections I have come across Redux Toolkit, which abstracts lot of code of Redux. I have tried it out for the first time. Also this is the first time I have used Sass with React.
 
-### `yarn build`
+I would love to refactor the project to remove whole state management from Redux toolkit and see how I can implement the same with individual components state and Context API in the future.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Prerequisites for this project
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- One should have a Firebase web app conifg ready. If you dont know how to create it please refer [Firebase](https://firebase.google.com/docs/web/setup?authuser=0)
+- Since this project is powered by Youtube API, one should also have a Youtube API key ready. For any doubts please refer [Youtube Data API](https://developers.google.com/youtube/v3/docs)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Environment Variables
 
-### `yarn eject`
+Finally one should have file named `.env` with all the Firebase config and Youtube API key setup as follows
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```js
+// .env
+REACT_APP_APIKEY = [Firebase config API key]
+REACT_APP_AUTHDOMAIN = [Firebase config AuthDomain]
+REACT_APP_PROJECTID = [Firebase config Project ID]
+REACT_APP_STORAGEBUCKET = [Firebase config Storage bucket]
+REACT_APP_MESSAGINGSENDERID = [Firebase config Messaging Sender ID]
+REACT_APP_APPID = [Firebase config App Id]
+REACT_APP_YOUTUBE_APIKEY = [Youtube Data API key]
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## How to install this project
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Clone the project using the command `git clone https://github.com/vtejaeta/youtube-clone.git`
+2. Move into the file directory you wish to run using `cd {folder_name}`.
+3. Use the following command `npm install` or `yarn` to install the dependencies.
+4. Now you can run `npm run start` or `yarn start` to run the app in the development mode. It can be viewed in browser at `http:localhost:3000`
+5. For bundling one can use `npm run build` or `yarn build` which optimises build for best performance
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Questions
 
-## Learn More
+For questions related to using the project, please reachout to me through
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Twitter](https://twitter.com/vtejaeta9493)
