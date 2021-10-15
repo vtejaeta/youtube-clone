@@ -33,11 +33,6 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: 56.25%;
-
-  @include set-small-screen {
-    padding-top: 62.5%;
-  }
 }
 
 .main-video-cont {
@@ -130,7 +125,6 @@
   @media only screen and (max-width: 450px) {
     .main-video-player-cont {
       width: 95%;
-      padding-top: 53%;
       margin: 0 auto;
     }
 

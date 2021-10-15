@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
 import getSearchParam from "../../utils/searchParam.utils";
 
@@ -20,6 +21,7 @@ import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
 import ErrorFallback from "../../errorBoundary/ErrorFallback";
 
 import "./watchVideoScreen.styles.scss";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 export default function WatchVideoScreen(props) {
   const term = getSearchParam(props.location, "v");
@@ -51,11 +53,16 @@ export default function WatchVideoScreen(props) {
             <ErrorBoundary FallbackComponent={ErrorFallback}>
               <>
                 <div className="main-video-player-cont">
-                  <iframe
+                  {/* <iframe
                     src={`https://www.youtube.com/embed/${term}`}
                     title="video player"
                     frameBorder="0"
                     allowFullScreen
+                    className="main-video-player"
+                  /> */}
+                  <LiteYouTubeEmbed
+                    id={term}
+                    title="Dummy title"
                     className="main-video-player"
                   />
                 </div>
